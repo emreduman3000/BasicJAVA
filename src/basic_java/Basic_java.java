@@ -444,6 +444,33 @@ public class Basic_java {
     
     
     
+
+1-Class
+2-Package
+3-Subclass
+4-World
+    
+    Modifier
+public
+Y
+Y
+Y
+Y
+protected
+Y
+Y
+Y
+N
+no modifier
+Y
+Y
+N
+N
+private
+Y
+N
+N
+N
     
     
     
