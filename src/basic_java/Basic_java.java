@@ -5,18 +5,38 @@
  */
 package basic_java;
 
+import java.lang.reflect.Array;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Formatter;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author emreduman
  */
-public class Basic_java {
+public class Basic_java 
+{
 
     /**
      * @param args the command line arguments
@@ -27,34 +47,181 @@ public class Basic_java {
     static int b=2;
     static private double cev;
     static private double dev;
+    
+    public String name;
 
+    public Basic_java(String name) {
+        this.name=name;
+    } 
+    public Basic_java() {
+    }
+    
+    
     public static void main(String[] args)
     {
         // TODO code application logic here
-        
+       
+        /*
+            Basic_java nesneee=new Basic_java();  
+            System.out.println(nesneee instanceof Basic_java);//true
+            String qwe="qwe"; System.out.println(qwe instanceof String);//true
+            int i=1; //System.out.println(i instanceof Integer);//variable must be reference data type
+            Integer i2=new Integer(1); System.out.println(i2 instanceof Integer);//true
+        */
+
         //<editor-fold defaultstate="collapsed" desc="run">
 
         //showMESSAGEdialog();
         //SCANNER();
         //showINPUTdialog();
-        //INCREMENT_DECREMENT();
         //MATH();
-        //TYPES_CONVERSIONofVARIABLES();
         //VARIABLES();
-        //IF();
+        //wrapperClass();
+        //int[] iff=IF(new int []{1,2,3}); printArray(iff);  System.out.println(Arrays.toString(iff));
         //SWITCH();
         //WHILE();
         //FOR();
-        //ARRAY();
+        int [] a56=new int[]{1,2,3,4,5}; System.out.println(ARRAY(a56));System.out.println(Arrays.toString(a56));//[10, 2, 3, 4, 5]
         //break_continue();
-        //Stringg();
         //FOR_EACH();
         //SHORTCUT();        
         //ARRAYLIST();
-        
+        //printf();
+        //format();
+        //formatter();
+        //Bitwise_Operators();
+        //Arithmetic_Operators();
+        //Assignment_Operators();
+        //Comparison_Operators();
+        //Logical_Operators();
+        //concatenation();
+        //ternary();
+        //characters();
+        //codeBlock();
+        //customFormat();
+        //TypeCasting();
+        //conversion();
+        //Varargs();//Number of arguments: 0
+        //icice_Methods();//ebob-ekok
+        //icice_Methods2();    
+        //icice_Methods3();
+        //setPassword nesne= new setPassword(); nesne.putPassword();
+        //setPassword.putPassword();
+        //date();
+        //Stringg();
+        //StringBuilder();
+        //StringBuffer();
+        //AlgorithmQuestions();
+        //nesneee.passByValue_Reference();
+        //nesneee.passByValueAndReference();
         // </editor-fold>
  
-        //<editor-fold defaultstate="collapsed" desc="array ||reverse method">
+        //<editor-fold defaultstate="collapsed" desc="ARRAY-Class">
+        /* 
+       Scanner scan=new Scanner(System.in);
+       int itemNumber;
+       while(true)
+       {
+            System.out.print("Determine the Shopping List Capacity:");
+            itemNumber=scan.nextInt();
+          
+            if(0<=itemNumber && itemNumber<=20)
+                break;
+            else
+                System.out.println("The List Limit must be between 0-20");
+       
+       }
+       ARRAYshopping shop = new ARRAYshopping(itemNumber);
+       boolean go=true;
+       int listNo=0;
+       int a,b,c,d;
+
+       
+       while(go)
+       {
+           Scanner scan2=new Scanner(System.in);
+           System.out.println("To add item(Press 1):\nTo delete item(press 2)\n"
+           +"To display the list(press3)\nto sort out the list(press4)\nto swap 2 items(press 5)\nTo Exit(press 6)\n");
+           int option=scan.nextInt();
+           switch (option)
+           {
+                case 1:
+                    Scanner scan3=new Scanner(System.in);
+                    if(listNo<itemNumber)
+                    {
+                        listNo++;
+                        System.out.printf("Add your %d.item:",listNo);
+                        String item=scan2.nextLine();
+                        shop.AddItems(item);
+                    }
+                    if(listNo==itemNumber)
+                    {
+                        System.out.println("The List is Full!!!");
+                        System.out.println("If you want increase the limit and add an item(press 1):");
+                        a=scan3.nextInt();
+                        if(a==1)
+                        {
+                            Scanner scan4=new Scanner(System.in);
+                            System.out.println("please enter your item's row :");
+                            int row=scan4.nextInt();
+                            System.out.println("and name:");
+                            String added=scan4.next();
+                            shop.addItems_index(added, row);
+                        }     
+                        else{System.out.println("okay :)");}
+                    }
+                    break;
+                case 2:
+                   System.out.println("To delete from the first line(press 1)");
+                   System.out.println("To delete from the last line(press 2)");
+                   System.out.println("To delete from any line (press 3)");
+                   System.out.println("NOT To delete anything (press 4)");
+                   int delOption=scan.nextInt();
+                   if(delOption==1){shop.Del_item_fromBeginning();}
+                   if(delOption==2){shop.Del_item_fromEnd();}
+                   if(delOption==3){System.out.println("Please type the number of the item:");shop.Del_item(scan2.nextInt());}
+                   if(delOption==4){}
+                   break;
+                case 3:
+                    shop.printList();
+                    break;
+                    
+                case 4:
+                    shop.sortOut();
+                    break;
+
+                case 5:
+                    Scanner scan4=new Scanner(System.in);
+                    System.out.println("change the place of two items\nThe first item's number:");
+                    c=scan4.nextInt();
+                    System.out.println("The sdcond item's number:");
+                    d=scan4.nextInt();
+                    shop.swap(c, d);
+                    break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("enter between 1-6");
+                   break;                          
+           }
+           
+            if(option==6){break;}
+           
+        
+       }
+       
+       
+        */
+        // </editor-fold>
+               
+        //<editor-fold defaultstate="collapsed" desc="selectionSort|array ||reverse method">
+        /*
+        SelectionSort ob = new SelectionSort(); 
+        int arr[] = {64,25,12,22,11}; 
+        ob.sort(arr); 
+        System.out.println("Sorted array"); 
+        ob.printArray(arr); 
+        */
         /*
         int[] list = {1, 2, 3, 4, 5};//reverse method in methods
         reverse(list);//ben yazdım listeyi ters çevirsin
@@ -92,7 +259,7 @@ public class Basic_java {
         //add_up();// this method is in the method region
 
         // </editor-fold>
-                
+                      
         //<editor-fold defaultstate="collapsed" desc=" DECIMALFORMAT">
         /*
         customFormat("###,###.###", 123456.789);
@@ -108,9 +275,7 @@ public class Basic_java {
         //<editor-fold defaultstate="collapsed" desc=" Methods ">
 
         
-        
-        // TODO code application logic here
-        
+   
         int a=9;//ıf ı didnot identify a in main method static a was going to be used
         //int a=8;//ı cant assign a new value to a variable
         a=8; // a's new value is 8
@@ -119,7 +284,7 @@ public class Basic_java {
         System.out.println("B:"+b);//static b out of main method
 
         method1();
-        //System.out.println(method1());//error because there should be a parameter
+        //System.out.println(method1());//error because it is void message
         method2(5);
         method2(1,2,3,4,5,6);
         String bbb="Mr.DUMAN";
@@ -133,19 +298,19 @@ public class Basic_java {
         System.out.println(ddd);//println:8 return 64
         System.out.println(method3(3,3));//println:6 return:6
 
+        Basic_java nesne=new Basic_java(); nesne.method3(1,2,"3");//aaaa 23 static method değil nesne gerekli
         System.out.println(method3());//turkey turkey
-        method3();//turkey
+        Basic_java.method3();//turkey class ismi ile klas içindeki static degerlere ulasbilirim
         
         
        
         
         method2(1,2,3,4,5,6);
 
-        
+  
         // </editor-fold>   
               
-    }
-    
+    }   
     
     
     
@@ -199,7 +364,7 @@ public class Basic_java {
     {
         System.out.println("aaaa "+integer+ str);       
     } 
-      public static void method3(int f,int integer,String str) 
+      public void method3(int f,int integer,String str) 
     {
         System.out.println("aaaa "+integer+ str);       
     }
@@ -306,20 +471,44 @@ public class Basic_java {
     javadoc -d foldernamethat ı created  file.java  -version -param -author -return - since
     
     
-    
-    
-    
-    NUMERICAL DATA TYPES/Primitive Types
+DATA TYPES			  
 
-    NAME                           DOMAIN                          STORAGE-SIZE  
-    byte         –128 to 127                                         8 bits
-    short        –32768 to 32767                                     16 bits
-    int          –2147483648 to 2147483647                           32 bits
-    long         –922337203684547758808 to 922337203684547758807     64 bits
-    char          0 to 65535                                        2(16 bits)
+        1-PRIMITIVE DATA TYPES
 
-    float        –3.4E38 to 3.4E38                                   32 bits
-    double       –1.7E308 to 1.7E308                                 64 bits
+              1a.)There are 8 primitive data types in Java:
+
+                      Data Type	Size		Description
+                      byte		1 byte		Stores whole numbers from -128 to 127
+                      short		2 bytes		Stores whole numbers from -32,768 to 32,767
+                      int		4 bytes		Stores whole numbers from -2,147,483,648 to 2,147,483,647
+                      long		8 bytes		Stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+                      float		4 bytes		Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits
+                      double		8 bytes		Stores fractional numbers. Sufficient for storing 15 decimal digits
+                      boolean		1 bit		Stores true or false values
+                      char		2 bytes		Stores a single character/letter or ASCII values
+
+              1b.)Numbers
+
+                      Primitive number types are divided into 2 groups:
+
+                      * Integer types stores  without decimals. Valid types are byte, short, int and long. 			
+                      * Floating point types represents numbers with a fractional part, containing one or more decimals. There are two types: float and double.
+
+      2-NON-PRIMITIVE DATA TYPES
+
+              Non-primitive data types are called reference types because they refer to objects.
+
+              The main difference between primitive and non-primitive data types are:
+
+              * Primitive types are predefined (already defined) in Java. Non-primitive types are created by the programmer 
+                and is not defined by Java (except for String).
+
+              * Non-primitive types can be used to call methods to perform certain operations, while primitive types cannot.
+
+              * A primitive type has always a value, while non-primitive types can be null.
+              * A primitive type starts with a lowercase letter, while non-primitive types starts with an uppercase letter.
+              * The size of a primitive type depends on the data type, while non-primitive types have all the same size.
+              * Examples of non-primitive types are Strings, Arrays, Classes, Interface, etc. You will learn more about these in a later chapter.
 
         
         
@@ -480,172 +669,234 @@ N
     
     // </editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc=" TYPES/CONVERSIONSofVARIABLES ">
-    public static void TYPES_CONVERSIONofVARIABLES()
+    //<editor-fold defaultstate="collapsed" desc="concatenation ">
+    public static void concatenation()
     {
+        //soldan saga calisir
+        System.out.println("3"+4);//34
+        System.out.println("3"+4+5);//345
+        System.out.println("3"+(4+5));//39
+        System.out.println(3+4+"5");//75
+        System.out.println(3+4+"5"+6);//756
+        System.out.println(3*4+"5"+6/2);//1253
+        System.out.println("3*4"+5+6);//3*456
         
-        short s=9;
-        
-        byte b=3;
-                         
-        int i = 4&6, ii=10&2,iii=10%2, iiii=6%-13; System.out.println(i+"      "+ii+" "+iii+" "+iiii);
-        //System.out.println(-34%5 , -34%-5 ,  34%-5); error
-        //System.out.println("edaedaed","eafeaf");       error
-             
-        long l = 129;        System.out.println("byte:"+(byte)(l)); //long 0==byte0/ long 127==byte127/ long128==byte-128/ long129==byte-127/ long255 ==byte-1/ long256==byte0 long257==byte1
-
-        
-        float f = 100.2f;  f = 100.2F; System.out.println("float+integer+short+double:"+f+5+s+b);//100.2593 
-        //f=100.2; error
-        System.out.println("float+integer+short+double:"+(f+5+s+b));//117.2   
-        System.out.println((int)f); //100
-                System.out.println((double)f); //100.199...
-                byte xx=(byte)(f);
-                        System.out.println((byte)(f)); //100
-
-
-
-        
-        
-        double d = 10000000.2d;     d=1000.2;//****
-        d = 100.2D; d=1000.20; System.out.println("double:"+d);//1000.2
-                System.out.println((byte)(d)); //100
-                
-
-
-        
-
-        boolean lightsOn = true;
-        lightsOn = false;
-        int iİ =2;
-        int jJ =3;
-        System.out.println('A' > 'a');
-        System.out.println(5!=10);
-        System.out.println(iİ*jJ > iİ);
-        System.out.println("Hello" !="HelloStudents");
-        System.out.println("HEllo" == "HelloStudents");
-        System.out.println("HelloStudents" .equals( "HelloStudents"));
-        System.out.println();
-
-        //Logical operators
-        System.out.println(!(5==7));
-        System.out.println(!(5!=jJ));
-        System.out.println((iİ>jJ)&&(iİ==0));
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        char charr='7'+'9'; System.out.println(charr);//p
-        char e='A';         System.out.println((int)'0' +"\b"+ (int)('1')+"%n"+(int)('a')+"\t"+(int)'b'+"\f "+(int)'A');// \f up arrow \b delete 1 digit
-      //\n == %n
-        char char1, char2;
-        char1 = 65; 		// char1 = 'A'
-        char2 = '6';// 6
-
-        System.out.println("char1 = " + char1);
-        System.out.println("char2 = " + char2);
-        //System.out.println("char1 + 1 = " + (char)(char1 + 1) );
-        System.out.println("++char1 = "  +  ++char1);
-        System.out.println("++char2 = "  +  ++char2);
-
-
-        
-        
-        
-        
-        
-        
-        String name="duman";
-        System.out.println(name);
-        System.out.println("Mr."+" ZEK");//after pressing enter button  plus sign is pu automatically
-        System.out.println("my name:\n \t '\\emre duman\'");
-        System.out.println("My Name:\n\t \\\\ \'Satyendra Narayan\'" );
-
-        System.out.print("komando  \n");//next line!!!!!!!!!
-        System.out.println("tegmen\t "+a);// duman tab gap 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //CONVERSION
-        
-        System.out.println((int)(7.9f)); //7
-                System.out.println((float)(8+2)); //10.0
-                        System.out.println((short)(3.3d)); //3
-                                System.out.println((double)(-3/2)); //-1.0d
-                                        System.out.println(110.0 ==(float)((int)(7.9+(double)(100+2.2f))));//true
-
-
-                                        
-                                        
-        byte bb = 100;	//declaring and assigning value to a variable
-        //Implicit conversion
-//	double d = b;	//assigning byte type data to double type variable
-        double dd  = (double) bb;  //explicit casting
-        System.out.println("Value of d = " + dd);
-        System.out.println("Value of b = " + bb);
-        
-        
-        
-        
-        double  D= 128.5;	//declaring and assigning value to a variable
-        //Explicit conversion
-        byte B = (byte)D;	//assigning double type data to byte type variable
-        System.out.println("Value of b = " + D);
-        System.out.println("Value of d = " + B);
-        
-        
-        
-        
-        double ddd = (double)200;	//declaring and assigning value to a variable
-        double ee=200;
-        byte bbb = (byte) ddd;	//implicit conversion is not allowed
-        System.out.println("Value of d = " + ddd);
-        System.out.println("Value of b = " + bbb);
-        System.out.println("Value of ee = " + ee);
-        
-        
-
-        char de = 'a';	//declaring and assigning value to a variable
-        byte be = (byte) de;	//implicit conversion is not allowed    99 
-        System.out.println("Value of de = " + de);
-        System.out.println("Value of be = " + be);
-
-        byte bbe = 66;
-        char dde = (char)bbe;//B
-        char ddee=66;//B
-        System.out.println("Value of dde = " + dde);
-        System.out.println("Value of bbe = " + bbe);
-        System.out.println("Value of ddee = " + ddee);
-
-        char mychar = (char) 97;
-        System.out.println("mychar = " + mychar);
-
-
-
-        
-        
-        
+        String sk  = String.valueOf(54);
+        System.out.println(sk + 123);//54123
+        System.out.println("emre"+1+2+3);//emre123
+        System.out.println(1+2+3+"emre"+4);//6emre4
+   
     }
  
     // </editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc=" Reassignment Value/Public Variables ">
+    //<editor-fold defaultstate="collapsed" desc="printf ">
+
+    public static void printf()
+    {
+
+        /*
+        FORMAT SPECIFIER	CONVERSION APPLIED
+        %%	Inserts a % sign
+        %x %X	Integer hexadecimal
+        %t %T	Time and Date
+        %s %S	String
+        %n	Inserts a newline character
+        %o	Octal integer
+        %f	Decimal floating-point
+        %e %E	Scientific notation
+        %g	Causes Formatter to use either %f or %e, whichever is shorter
+        %h %H	Hash code of the argument
+        %d	Decimal integer
+        %c	Character
+        %b %B	Boolean
+        %a %A	Floating-point hexadecimal
+        */
+            System.out.printf("The result of %f times %f is %f. \n", .25, 1.1, (.25 * 1.1));//virgulden sonra 6 digits
+            System.out.printf("%d%n", 25);//%d is used for integer values
+            System.out.printf("DECIMAL:%d\n",2555);//we have put %d to print all values together
+            //System.out.printf("%d",0.2);error
+            //System.out.printf("%f",888); error
+            System.out.printf("%s%n","wfew");
+            int count=5; double amounnt=45.56; System.out.printf("count is %d and amount is %f  \n",count,amounnt);
+            //count is 5 and amount is 45.560000 
+            
+            
+            
+            
+            double amountt=12618.98, interestRate=0.0013,  interest=amountt*interestRate;
+            System.out.printf("Interest is $%.4f\n",interest);//Interest is $16.4047
+        
+            System.out.printf("FLOAT:%f\n",12345678910111213.0000000001);//12345678910111214.000000 6 digitten dazla olunca yukarı yuvarlar
+            System.out.printf("FLOAT:%10.5f\n",2.345);//FLOAT:***2.  - nokta dahil toplam 10 digits
+            System.out.printf("FLOAT:%10.7f\n",2.345);//FLOAT:*2.34500000
+            System.out.printf("FLOAT:%f\n",2.345f);//FLOAT:2.345000
+            System.out.printf("%-1.2f\n", 7.245);//45 46 47 48 48 50 --> 7.25
+            System.out.printf("%-3.2f\n", 7777888.2777);//toplam 5 haneli olmalı 7777888.28
+            
+            
+            
+            //ERRORS
+            //System.out.printf("%5d %d", 1, 2, 3);there must not be 3 parameter
+            //System.out.printf("%5d %f", 1);//there must be 2 parameter
+            System.out.printf("%5d %f%n", 1, 2.);// ****1 2.000000  -  I must 2.  2.0  2f   2F
+            
+            System.out.printf("Hello%2d and %8s", 10, "Hi!!!%n\n");//8 ve altı yazarssan boşluk işlemez
+            System.out.printf("Hi,%s%4d%n", "Hello", 88);//Hi,Hello**88
+            System.out.printf("Hi, %d %4.2f%n", 8, 5.556);//Hi, 8 5.56
+            System.out.printf("Hi,%-4s&%6.2f%n", "Hi", 5.5);//Hi,Hi**&**5.50  - -4 ile sona 2 bosluk koydu, 6 ile basa 2 bosluk koydu
+            System.out.printf("Hi, Hi, %.4f%n", 5.56);
+            
+            String hh; //String hh=printf yapamam error format da olur ama
+            System.out.printf("The value of the float variable is " +
+                  "%f, while the value of the integer " +
+                  "variable is %d, and the string " +
+                  "is %s  %n", 4.4, 4, 4);
+            
+            
+            System.out.printf("%s %n",4);//4
+            System.out.printf("%c %n",'c');//c
+            
+    }
+      
+    // </editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="System.out.format - String.format ">
+
+    public static void format()
+    {
+        
+        /*
+        FORMAT SPECIFIER	CONVERSION APPLIED
+        %%	Inserts a % sign
+        %x %X	Integer hexadecimal
+        %t %T	Time and Date
+        %s %S	String
+        %n	Inserts a newline character
+        %o	Octal integer
+        %f	Decimal floating-point
+        %e %E	Scientific notation
+        %g	Causes Formatter to use either %f or %e, whichever is shorter
+        %h %H	Hash code of the argument
+        %d	Decimal integer
+        %c	Character
+        %b %B	Boolean
+        %a %A	Floating-point hexadecimal
+        */
+
+         //   The System.out.format() method works exactly the same as
+            //   System.out.printf()! 
+            System.out.format("%10d\n",2);// *********2   ıt is printed in 10th digit
+            System.out.format("%12.2f\n",123.456789);// *******12.46
+            System.out.format("%8d%8s%8.3f\n",1234567,"jajava",123456.123456);//*1234567**jajava123456.123   -  the last digit will be 8th digit
+            System.out.format("%-8d%-8s%-8.1f\n",1234,"java",5.63);//1234****java****5.6*****
+            
+            long n = 461012;
+            System.out.format("%d%n", n);//461012      %n == \n
+            System.out.format("%08d%n", n);//00461012
+            System.out.format("%+8d%n", n);//*+461012
+            System.out.format("%,8d%n", n);//*461,012
+            System.out.format("%+,8d%n%n", n);//+461,012
+            
+            double pi = Math.PI;                System.out.format("%f%n", pi);       System.out.format("%.3f%n", pi);   
+                                                System.out.format("%10.3f%n", pi);   System.out.format("%-10.3f merhaba%n", pi); 
+            
+            
+            
+
+            //String acc=System.out.print("accc");   ERROR
+            
+            String format = String.format("|%30s|", "Hello World");               System.out.println(format); // |                   Hello World|
+           
+            String format1 = String.format("|%-30s|", "Hello World");           
+            System.out.println(format1);  // |Hello World                   |
+
+            String format2 = String.format("|%.8s|", "Hello World");            
+            System.out.println(format2);//|Hello Wo| 
+
+            String format3 = String.format("|%30.5s|", "Hello World");     
+            System.out.println(format3);//|                         Hello|
+ 
+            
+            String fs;
+            fs = String.format("The value of the float variable is " +
+                   "%f, while the value of the integer " +
+                   "variable is %d, and the string " +
+                   "is %s", 5.5, 6, "köse");
+            System.out.println(fs);
+
+            //Integer.format diye bir sey yok
+            
+    }
+      
+    // </editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Formatter Classı ">
+
+    public static void formatter()
+    {
+        
+        // create Formatter class object 
+        Formatter formatter = new Formatter(); 
+        
+        // Use Space format specifier 
+        formatter.format("\n%d%n", -111); //-111   //%n String degerde calısmaz  
+        formatter.format("%+d%n", 111); //+111        
+        formatter.format("%(d%n", -111); //(-111)        
+        formatter.format("%, .3f%n", 32659526566.4521);         
+        formatter.format("%, d%n", 1000000);//1, 000, 000
+        formatter.format("|%20.4f|%n", 1234.1234);//|           1234.1234|
+        formatter.format("|%-20.4f|%n", 1234.1234);//|1234.1234           |
+        formatter.format("10 %% 4 = 2%n"); //10 % 4 = 2      
+
+        // %x format specifier 
+        // It prints the number in Hexadecimal 
+        // with lowercase alphabets         
+        formatter.format("%x%n", 250); //%x: fa
+        // with uppercase alphabets         
+        formatter.format("%X%n", 250); //%X: FA
+
+        
+        // %e format specifier 
+        // It prints the number in Scientific Notation 
+        // with lowercase alphabets 
+        formatter.format("%e%n", 123.1234); //%e: 1.231234e+02
+                formatter.format("%.4f%n", 123.1234567); //123.1235
+                        formatter.format("%.15s%n", "12345678901234567890"); //123.1
+                                formatter.format("%010d%n", 88); //0000000088
+                                formatter.format("%10d%n", 88);  //********88
+
+
+
+        
+        
+  
+
+        String form ="--------------- Format Class --------------- \n formatter nesnesi: "+formatter;
+        System.out.println(form);
+        
+        //conversion yapmaya gerek yok kısa yolu bu
+        //hepsini yazar çünkü her defasında yeni bir nesne olusturlmuyor
+        //her sey bir nesneye kaydediliyor String.concat gibi
+       
+        
+       
+    }
+
+    
+        // </editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc=" Variables ">
+    
+        public void variable()
+        {
+            //static int aa;//ERRORR  method içine static variable atanamaz
+        }
         static public void VARIABLES()
         {
+            //static int bb; ERROR!!!
+            int aaa;//local variable must be initialized
+            //System.out.println(aaa);//if ı want to run it gives error
             
             int f=99; float g=f; System.out.println(g);//99.0
             int j=00; System.out.println(j);//0
@@ -670,98 +921,272 @@ N
 
             
             int yy=5; float ff=3.0f; System.out.println(yy+ff);//6.0
-            System.out.println(yy%ff);
-            
-            
-            
-            //PRINTF
-            
-            System.out.printf("The result of %f times %f is %f.", .25, 1.1, (.25 * 1.1));
-            System.out.printf("%d", 25);//%d is used for integer values
-            System.out.printf("DECIMAL:%d\n",2555);//we have put %d to print all values together
-            //System.out.printf("%d",0.2);error
-            //System.out.printf("%f",888); error
-            System.out.printf("%s","wfew");
-            int count=5; double amounnt=45.56; System.out.printf("count is %d and amount is %f  \n",count,amounnt);
-            //count is 5 and amount is 45.560000 
-            
-            
-            
-            
-            double amountt=12618.98, interestRate=0.0013,  interest=amountt*interestRate;
-            System.out.printf("Interest is $%.4f\n",interest);
-        
-            System.out.printf("FLOAT:%f\n",12345678910111213.123456000);//FLOAT:2.345000
-            System.out.printf("FLOAT:%10.5f\n",2.345);//10 digits later FLOAT:2.3
-            System.out.printf("FLOAT:%f\n",2.345f);//FLOAT:2.345000
-            System.out.printf("%-5.2f\n", 7.244);
-            System.out.printf("%-5.2f\n", 7.277);
-            
-            
-            //   The System.out.format() method works exactly the same as
-            //   System.out.printf()! 
-            System.out.format("%10d\n",2);//ıt is printed in 10th digit
-            System.out.format("%12.2f\n\n\n",123.456789);
-            System.out.format("%8d%8s%8.3f\n",1234567,"jajava",123456.123456);//the last digit will be 8th digit
-            System.out.format("%-8d%-8s%-8.1f\n",1234,"java",5.63);
-            
-            long n = 461012;
-            System.out.format("%d%n", n);//%n == \n
-            System.out.format("%08d%n", n); 
-            System.out.format("%+8d%n", n); 
-            System.out.format("%,8d%n", n);
-            System.out.format("%+,8d%n%n", n);
-            
-            double pi = Math.PI;                System.out.format("%f%n", pi);       System.out.format("%.3f%n", pi);   
-                                                System.out.format("%10.3f%n", pi);   System.out.format("%-10.3f merhaba%n", pi); 
-            
-            
-            //ERRORS
-            //System.out.printf("%5d %d", 1, 2, 3);there must not be 3 parameter
-            //System.out.printf("%5d %f", 1);//there must be 2 parameter
-            //System.out.printf("%5d %f", 1, 2);//I must 2.  2.0  2f   2F
-            
-            System.out.printf("Hello%2d and %8s", 10, "Hi!!!%n\n");//8 ve altı yazarssan boşluk işlemez
-            System.out.printf("Hi,%s%4d%n", "Hello", 88);
-            System.out.printf("Hi, %d %4.2f%n", 8, 5.556);
-            System.out.printf("Hi,%-4s&%6.2f%n", "Hi", 5.5);
-            System.out.printf("Hi, Hi, %.4f%n", 5.56);
-
-            //String acc=System.out.print("accc");   ERROR
-            
-            String format = String.format("|%30s|", "Hello World");               System.out.println(format); // |                   Hello World|
-           
-            String format1 = String.format("|%-30s|", "Hello World");             System.out.println(format1);  // |Hello World                   |
-
-            String format2 = String.format("|%.8s|", "Hello World");//|Hello Wo|              System.out.println(format2);// |Hello|
-
-            String format3 = String.format("|%30.5s|", "Hello World");            System.out.println(format3);//|                         Hello|
- 
-
-            
-            
+            System.out.println(yy%ff);   
         }
                 
                 
         // </editor-fold>   
+        
+    //<editor-fold defaultstate="collapsed" desc=" characters ">
     
-    //<editor-fold defaultstate="collapsed" desc="INCREMENT-DECREMENT Operators ">
-    public static void INCREMENT_DECREMENT()
+       public void characters()
+       {
+               System.out.println("my name:\n \t '\\emre duman\'");
+        System.out.println("My Name:\n\t \\\\ \'Satyendra Narayan\'" );
+
+        System.out.print("komando  \n");//next line!!!!!!!!!
+        System.out.println("tegmen\t "+a);// duman tab gap 
+       }
+                // </editor-fold>   
+
+    //<editor-fold defaultstate="collapsed" desc=" typeCasting ">
+    
+       public static void TypeCasting()
+       {
+    
+        //1) Auto Widening  Casting
+           byte u1=10; short u2=u1; System.out.println(u2);//10
+        //2) Explicit Narrowing Casting
+        double u3=128; int u4=(int)u3; byte uu5=(byte)u4; System.out.println(u4);//128
+           System.out.println(uu5);// 127 den sonra -128 
+        //TYPE CASTING
+		 byte by1 = 101;
+	        int sayi1 = by1;//Kucuk data tipini buyuk data tipini cevirmek icin extra bir kod yazmaya 
+	                      //gerek yok Java bunu otomatik olarak yapar. (Auto Widening)
+	        
+	        System.out.println(sayi1);//101
+	        
+	        int sayi2 = 53;
+	        byte by2 = (byte)sayi2;//Buyuk data tipini kucuk data tipine cevirmek Java tarafindan yapilmaz.
+	                               //Ornekteki gibi sag tarafa donusturmek istedigimiz data tipini 
+	                               //parantez icinde yazmaliyiz.
+	        System.out.println(by2);//53
+	        
+	        double sayi3 = 23.9;
+	        int by3 = (int)sayi3;
+	        System.out.println(by3);//23
+	        
+	        float sayi4 = -23.9f;
+	        short by4 = (short)sayi4;
+	        System.out.println(by4);//-23 
+	        
+	        double sayi5 = 4.8;  
+	        double sayi6 = 1.4;
+	        
+	        double sonuc1 = sayi5 / sayi6;
+	        System.out.println(sonuc1); // 3.428571428571429
+	        
+	        int sonuc2 = (int)(sayi5 / sayi6);
+	        System.out.println(sonuc2); //3
+	        
+	        int sayi7 = 5;
+	        int sayi8 = 3;
+	        
+	        int sonuc3 = sayi7 / sayi8;
+	        System.out.println(sonuc3);//Normalde 5/3=1.6666666... ama data type'i int yaparsaniz
+            // sadece tam kismi gorursunuz ==> 1
+	        
+	        double sonuc4 = sayi7 / sayi8;//1.0
+	        System.out.println("sonuc4:"+sonuc4);//sonuc4:1.0
+	      
+	        
+	        int sayi9 = 255;
+	        byte by5 = (byte)sayi9;
+	        System.out.println(by5);//Normalde byte'ta (-128 ...-1, 0, 1 ...127) 256 sayi var
+	                                //255 i 256 ya boler kalani yazar- 255= 127+128 -1 e denk gelir
+	        
+        
+        
+        short s=9; byte b=3;
+                         
+        int iii=10%2, iiii=6%-13; System.out.println(iii+" "+iiii);
+        //System.out.println(-34%5 , -34%-5 ,  34%-5); error
+        //System.out.println("edaedaed","eafeaf");       error
+             
+        long l = 129;        System.out.println("byte:"+(byte)(l)); //long 0==byte0/ long 127==byte127/ long128==byte-128/ long129==byte-127/ long255 ==byte-1/ long256==byte0 long257==byte1
+
+        
+        float f = 100.2f;  f = 100.2F; System.out.println("float+integer+short+double:"+f+5+s+b);//100.2593 concanation
+        //f=100.2; error
+        System.out.println("float+integer+short+double:"+(f+5+s+b));//117.2   
+        System.out.println((int)f); //100
+                System.out.println((double)f); //100.199...
+                byte xx=(byte)(f);
+                        System.out.println((byte)(f)); //100
+
+
+
+        
+        
+        double d = 10000000.2d;     d=1000.2;//****
+        d = 100.2D; d=1000.20; d=100d; System.out.println("double:"+d);//100.0
+                System.out.println((byte)(d)); //-24
+                
+
+
+       
+	        
+	        //SWAP
+	        double say1=10;
+	        int say2=12;
+	        long ll=0;
+	        System.out.println("say1:"+say1+"    say2:"+say2);//say1:10.0    say2:12
+
+	        ll=(long)say1;//explicit narrowing type casting
+	        say1=say2;
+	        say2=(int)ll;//explicit narrowing type casting
+	        System.out.println("say1:"+say1+"    say2:"+say2);//say1:12.0    say2:10
+       
+	        //Swap again
+	        say1+=say2;
+	        say2=(int) (say1-say2);
+	        say1-=say2;
+
+	        System.out.println("say1:"+say1+"    say2:"+say2);//say1:10.0    say2:12
+                
+                
+                
+                
+                char charr='7'+'9'; System.out.println(charr);//p
+        char e='A';         System.out.println((int)'0' +"\b"+ (int)('1')+"\n"+(int)('a')+"\t"+(int)'b'+"\f "+(int)'A');// \f up arrow \b delete 1 digit
+      //\n == %n
+        char char1, char2;
+        char1 = 65; 		// char1 = 'A'
+        char2 = '6';// 6
+
+        System.out.println("char1 = " + char1);//char1 = A
+        System.out.println("char2 = " + char2);//char2 = 6
+        //System.out.println("char1 + 1 = " + (char)(char1 + 1) );
+        System.out.println("++char1 = "  +  ++char1);
+        System.out.println("++char2 = "  +  ++char2);
+
+  
+        
+        System.out.println((int)(7.9f)); //7
+                System.out.println((float)(8+2)); //10.0
+                        System.out.println((short)(3.3d)); //3
+                                System.out.println((double)(-3/2)); //-1.0d
+                                        System.out.println(110.0 ==(float)((int)(7.9+(double)(100+2.2f))));//true
+
+                                        
+                                        
+                                              
+        
+                                        
+        byte bb = 100;	//declaring and assigning value to a variable
+        //Implicit conversion
+//	double d = b;	//assigning byte type data to double type variable
+        double dd  = (double) bb;  //explicit casting
+        System.out.println("Value of d = " + dd);
+        System.out.println("Value of b = " + bb);
+        
+        
+        
+        
+        double  D= 128.5;	//declaring and assigning value to a variable
+        //Explicit conversion
+        byte B = (byte)D;	//assigning double type data to byte type variable
+        System.out.println("Value of b = " + B);//127 gitti 1 daha giderse -128 yani
+        System.out.println("Value of d = " + D);
+        
+        
+        
+        
+        double ddd = (double)200;	//declaring and assigning value to a variable
+        double ee=200;
+        byte bbb = (byte) ddd;	//implicit conversion is not allowed
+        System.out.println("Value of d = " + ddd);
+        System.out.println("Value of b = " + bbb);
+        System.out.println("Value of ee = " + ee);
+        
+        
+
+        char de = 'a';	//declaring and assigning value to a variable
+        byte be = (byte) de;	//implicit conversion is not allowed    99 
+        System.out.println("Value of de = " + de);
+        System.out.println("Value of be = " + be);
+
+        
+        
+        byte bbe = 66;
+        char dde = (char)bbe;//B
+        char ddee=66;//B
+        System.out.println("Value of dde = " + dde);
+        System.out.println("Value of bbe = " + bbe);
+        System.out.println("Value of ddee = " + ddee);
+
+        char mychar = (char) 97;
+        System.out.println("mychar = " + mychar);
+
+        
+        
+        
+           System.out.println(1.0 - 0.1 - 0.1);//0.8
+           System.out.println(10/2.0);//5.0
+        
+       }
+    // </editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="conversion ">
+    public static void conversion()
     {
-        int counter = 1;
-        int increment = 2;
-        System.out.print(counter + " ");
-        counter += increment;
-        System.out.print(counter + " ");
-        counter *= increment;
-        System.out.print(counter + " ");
-        increment /= 2;
-        counter -= increment;
-        System.out.println(counter);
-        System.out.println("increment: " + increment);
+     
+       //STRING
+        String str="111";       int strr=Integer.parseInt(str);  System.out.println(strr);//111
+        //String str2="111.0";    int strr2=Integer.parseInt(str2); System.out.println(strr2);//111 olmaz error
+        String str3="111.0";    int strr3=(int)Float.parseFloat(str3); System.out.println(strr3);//111
+        String str4="111.0";    double strr4=Short.parseShort(str4); System.out.println(strr4);//111.0 
 
+        String str5=Integer.toString(10);   System.out.println(str5);//10                  
+        String str6=Double.toString(10.0);   System.out.println(str6);//10.0                  
 
+        String str7 = String.valueOf(123.0); System.out.println(str7);//123.0
+        String str10 = String.valueOf('e'); System.out.println(str10);//e
 
+        Integer obj = new Integer(str);//!!!!!!  111 string deger alan constructor da var
+        System.out.println("obj:"+obj);//obj:111
+        String str8 = obj.toString(); System.out.println(str8);//111
+        String str11 = String.valueOf(obj); System.out.println(str11);//111
+       
+        String str9 = new Integer(str).toString(); System.out.println(str9);//111
+        
+        
+        //Integer.parseInt()
+        String number = "10";
+        int result = Integer.parseInt(number);
+        System.out.println(result);//10
+        
+        //Integer.valueOf()
+        number = "100";
+        //number = "100abc";//Exception in thread "main" java.lang.NumberFormatException: For input string: "100abc"
+       
+        //converting to String from Integer
+        Integer result2 = Integer.valueOf(number);
+        System.out.println(result2);//100
+        
+        System.out.println(String.valueOf(result));//10
+        number=result2.toString() ;System.out.println(number);//100
+        
+        }
+        // </editor-fold>
+       
+    //<editor-fold defaultstate="collapsed" desc="arithmetic/INC-DECREMENT Operators ">
+    public static void Arithmetic_Operators()
+    {
+        /*
+        Arithmetic Operators
+        Arithmetic operators are used to perform common mathematical operations.
+
+        Operator    Name                Description                             Example
+        +           Addition            Adds together two values                x + y	
+        -           Subtraction 	Subtracts one value from another	x - y	
+        *           Multiplication	Multiplies two values                   x * y	
+        /           Division            Divides one value by another            x / y	
+        %           Modulus             Returns the division remainder      	x % y
+        ++          Increment           Increases the value of a variable by 1	++x	
+        --          Decrement           Decreases the value of a variable by 1	--x
+        */
+       
 
         int x=25,y=10,z,w,p,result;
         x++;//26 later increment
@@ -778,66 +1203,384 @@ N
         System.out.print(i-- +" ");//1 yazıp eksiltiyor
         System.out.print(i +" ");//0
         System.out.println(--i);//-1 eksiltip yazıyor
-        System.out.println(--i + --i);//(-2) + (-3)=-5
-
-        System.out.println(!(x!=y));//false
+        System.out.println(--i + --i);//(-2) + (-3)=-5        
         
-        /*
-        boolean q=true;     q++;        System.out.println(q);
+        //boolean qe=true;     qe++;        System.out.println(qe);
         
-        int r=5;    int re= --(r++);     System.out.print(re);
+        //int r=5;    int r= --(r++);     System.out.print(r);
        
-        int qwe = 11++;     System.out.println(qwe);
-         */
+        //int qwe = 11++;     System.out.println(qwe); direk increment ile assign olunmaz
+         
         
     }
-                // </editor-fold>
+    // </editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="SHORTCUT Operators ">
-        public static void SHORTCUT()
+    //<editor-fold defaultstate="collapsed" desc="Assignment_Operators ">
+        public static void Assignment_Operators()
         {
 
-            int x=25,y=10,z,w,p,result;
-            z=x*y;
-            w=x/7;
-            p=z%7;
-            System.out.println("Z:"+z+"\tW:"+w+"\tP:"+p);
-            z*=2;//z=z*2;
-            w/=2;
-            p%=3;
-            System.out.println("Z:"+z+"\tW:"+w+"\tP:"+p);
-            
+            /*
+            Operator        Example	Same As	
+            =               x = 5	x = 5	
+            +=              x += 3	x = x + 3	
+            -=              x -= 3	x = x - 3	
+            *=              x *= 3	x = x * 3	
+            /=              x /= 3	x = x / 3	
+            %=              x %= 3	x = x % 3	
+            &=              x &= 3	x = x & 3	
+            |=              x |= 3	x = x | 3	
+            ^=              x ^= 3	x = x ^ 3	
+            >>=             x >>= 3	x = x >> 3	
+            <<=             x <<= 3	x = x << 3
+            */
+          
+            int counter = 1;
+            int increment = 2;
+            System.out.print(counter + " ");
+            counter += increment;
+            System.out.print(counter + " ");
+            counter *= increment;
+            System.out.print(counter + " ");
+            increment /= 2;
+            counter -= increment;
+            System.out.println(counter);
+            System.out.println("increment: " + increment);
             
             
         }
     // </editor-fold>
+        
+    //<editor-fold defaultstate="collapsed" desc="Comparison_Operators ">
+        public static void Comparison_Operators()
+        {
+            /*
+            Java Comparison Operators
+            
+            Comparison operators are used to compare two values:
+
+            Operator	Name                    Example	
+            ==          Equal to                x == y	
+            !=          Not equal               x != y	
+            >           Greater than            x > y	
+            <           Less than               x < y	
+            >=          Greater than or equalto x >= y	
+            <=          Less than or equal to	x <= y
+            */
+   
+            
+        }
+    // </editor-fold>
+        
+    //<editor-fold defaultstate="collapsed" desc="Logical_Operators ">
+        public static void Logical_Operators()
+        {
+            /*
+            Java Logical Operators
+            
+            Logical operators are used to determine the logic between variables or values:
+
+            Operator	Name            Description                                               Example	
+            &&          Logical and	Returns true if both statements are true                  x < 5 &&  x < 10	
+            ||      	Logical or	Returns true if one of the statements is true             x < 5 || x < 4	
+            !           Logical not	Reverse the result, returns false if the result is true   !(x < 5 && x < 10)
+            */
+            int x=5,y=6;
+            System.out.println(!(x!=y));//false
+
+             boolean lightsOn = true;
+        lightsOn = false;
+        int iİ =2;
+        int jJ =3;
+        System.out.println('A' > 'a');//false
+        System.out.println(5!=10);//true
+        System.out.println(iİ*jJ > iİ);//true
+        System.out.println("Hello" !="HelloStudents");//true
+        System.out.println("HelloStudents" == "HelloStudents");//true
+        System.out.println("HelloStudents" .equals( "HelloStudents"));//true
+        System.out.println();
+
+        //Logical operators
+        System.out.println(!(5==7));
+        System.out.println(!(5!=jJ));
+        System.out.println((iİ>jJ)&&(iİ==0));
+            
+        }
+    // </editor-fold>
+        
+    //<editor-fold defaultstate="collapsed" desc="Bitwise_Operators ">
+        public static void Bitwise_Operators()
+        {
+            /*
+            Operator	Meaning                         Work
+                &	Binary AND Operator             There are two types of AND operators in Java: the logical && and the binary &. Binary & operator work very much the same as logical && operators works, except it works with two bits instead of two expressions. The "Binary AND operator" returns 1 if both operands are equal to 1.
+                |	Binary OR Operator              Like "AND operators ", Java has two different "OR" operators: the logical || and the binary |. Binary | Operator work similar to logical || operators works, except it, works with two bits instead of two expressions. The "Binary OR operator" returns 1 if one of its operands evaluates as 1. if either or both operands evaluate to 1, the result is 1.
+                ^	Binary XOR Operator             It stands for "exclusive OR" and means "one or the other", but not both. The "Binary XOR operator" returns 1 if and only if exactly one of its operands is 1. If both operands are 1, or both are 0, then the result is 0.
+                ~	Binary Complement Operator	
+                <<	Binary Left Shift Operator	
+                >>	Binary Right Shift Operator	
+                >>>	Shift right zero fill operator	       
+            */
+        int num1 = 30, num2 = 6, num3 =0, num4=5,num5=5;
+
+        
+        //Bitwise AND
+        /*
+        a = 5 = 0101 (In Binary)
+        b = 7 = 0111 (In Binary)
+
+        Bitwise AND Operation of 5 and 7
+          0101
+        & 0111
+         ________
+          0101  = 5 (In decimal)
+        */
+        System.out.println("num1 & num2 = " + (num1 & num2));//num1 & num2 = 6
+        System.out.println("num4 & num1 = " + (num4 & num1));//num4 & num1 = 5
+        System.out.println("num4 & num5 = " + (num4 & num5)+"\n");//num4 & num5 = 5
+
+        
+        
+        //Bitwise OR
+       /*
+        a = 5 = 0101 (In Binary)
+        b = 7 = 0111 (In Binary)
+
+        Bitwise OR Operation of 5 and 7
+          0101
+        | 0111
+         ________
+          0111  = 7 (In decimal)
+        */
+        System.out.println("num1 | num2 = " + (num1 | num2) );//num1 | num2 = 30
+        System.out.println("num4 | num1 = " + (num4 | num1)+"\n");//num4 | num1 = 5
+
+
+        
+        
+        //Bitwise XOR ^
+        /*
+        a = 5 = 0101 (In Binary)
+        b = 7 = 0111 (In Binary)
+
+        Bitwise XOR Operation of 5 and 7
+          0101
+        ^ 0111
+         ________
+          0010  = 2 (In decimal)
+        */
+        System.out.println("num1 ^ num2 = " + (num1 ^ num2) );//30,6 num1 ^ num2 = 24
+
+        
+        
+        //Binary Complement Operator ~
+        /*
+        a = 5 = 0101 (In Binary)
+
+        Bitwise Compliment Operation of 5
+
+        ~ 0101
+         ________
+          1010  = 10 (In decimal) 
+        */
+        System.out.println("~num1 = " + ~num1 );//~num1 = -31
+
+        //Binary Left Shift Operator
+        num3 = num1 <<  2;
+        System.out.println("num1 << 1 = " + num3 );//num1 << 1 = 120
+
+        //Binary Right Shift Operator
+        num3 = num1 >>  2;
+        System.out.println("num1 >> 1  = " + num3 );//num1 >> 1  = 7
+
+        //Shift right zero fill operator
+        num3 = num1 >>> 2;
+        System.out.println("num1 >>> 1 = " + num3 );//num1 >>> 1 = 7
+
+            
+        
+
+        
+        }
+    // </editor-fold>
+        
+    //<editor-fold defaultstate="collapsed" desc="wrapperClass">
+
+    public static void wrapperClass()
+    {
+        //primitive data type - hafızada ne kadar yer kapladıgı belli olan data types
+    //WRAPPER CLASSES AND THEIR METHODS 
+        int i=1,i2=2,i3=3;
+        System.out.println("Min:"+Integer.MIN_VALUE+"  Max:"+Integer.MAX_VALUE);//Min:-2147483648  Max:2147483647
+        System.out.println("hashCode:"+Integer.hashCode((i+i2))+"bitCount:"+Integer.bitCount(123));//hashCode:3 bitCount:6
+        System.out.println("min:"+Integer.max(i, i2)+"max:"+Integer.min(i, i2));//min:2max:1
+        System.out.println("Size(bits):"+Long.SIZE+"  Bytes:"+Long.BYTES + " Type:"+ Long.TYPE);//Size(bits):64  Bytes:8  Type:long
+        System.out.println("Double NaN:"+Double.NaN+ " MAX_EXPONENT:"+Double.MAX_EXPONENT);//Double NaN:NaN MAX_EXPONENT:1023
+
+        short x=-3,y=4,z=8; 
+        System.out.println("valueOf:"+Integer.valueOf(x)+ "  compare"+ Short.compare(x, y));//valueOf:-3  compare-7 x-y
+        System.out.println( Double.valueOf(z).compareTo(Double.valueOf(y)));//z short variable is greater (+4)
+        System.out.println("Size:"+Short.MIN_VALUE+"  Bytes:"+Short.MAX_VALUE);//Size:-32768  Bytes:32767
     
+        char [] charArray={'1','2'};
+        System.out.println("CHARARRAY TO STRING:"+String.copyValueOf(charArray));//CHARARRAY TO STRING:12
+        
+        String string =new String("Java 10");
+        Integer integer =new Integer("1023");//integer yazar
+        Integer integer2 =12;
+        Double d=new Double(1.0d);
+        Double d2=1.0;
+        System.out.println(string+"  "+integer+" "+integer2);//Java 10  1023  12  concanation
+    }
+    
+        // </editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Code Blocks">
+    static public void codeBlock()
+    {
+        int level01=10;
+        {
+            
+            System.out.println(level01);//1 - ilk burası yazılı
+            
+            int level02=11;
+            {
+                System.out.println(level01);//2
+                System.out.println(level02);//3
+                
+                int level03=12;
+                {
+                    System.out.println(level01);//4
+                    System.out.println(level02);//5
+                    System.out.println(level03);//6
+                }
+            }
+            //System.out.println(level03); erorr
+        }
+        //System.out.println(level02); / error
+
+        
+        int $1=20;
+        {
+            System.out.println($1);//7
+            System.out.println(level01);//8
+            //System.out.println(level02);
+        }
+    }
+    
+    
+        //</editor-fold>
+
     //<editor-fold defaultstate="collapsed" desc=" DECIMALFORMAT">
 
-    static public void customFormat(String pattern, double value ) 
+    static public void customFormat() 
     {
-        //DecimalFormat CLASSı
-        DecimalFormat myFormatterrrr = new DecimalFormat(pattern);//class object
-        String output = myFormatterrrr.format(value);
-        System.out.println(value + "  " + pattern + "  " + output);
         
-
-    DecimalFormat myFormatter = new DecimalFormat("###,###.###");
-        String outputt = myFormatter.format(444456.789);
-        System.out.println (outputt);
-    
+        /*
+            0 – prints a digit if provided, 0 otherwise
+            # – prints a digit if provided, nothing otherwise
+            . – indicate where to put the decimal separator
+            , – indicate where to put the grouping separator
+        */
         
-String outpt = new DecimalFormat(pattern).format(value);//class object
+        //Creating a DecimalFormat instance is done like this:
+        String pattern = "###,###.###";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        System.out.println(decimalFormat);//java.text.DecimalFormat@674dc
+        System.out.println(decimalFormat.toString());//java.text.DecimalFormat@674dc
+        
+        
+        String format = decimalFormat.format(123456789.123);
+        System.out.println(format);//123,456,789.123
+        
+        //As you can see, the DecimalFormat is created with a formatting pattern.
+        //You can change this pattern later using the applyPattern()
+        //The applyPattern() method simply applies a new pattern to the DecimalFormat
+        //instance as if it were created with that pattern.
 
-               System.out.println (outpt);
+        decimalFormat.applyPattern("#0.##");
+        System.out.println(format);
+        
+      
+        
+        //DecimalFormatSymbols
+        //You can customize which symbols are used as decimal separator, grouping separator etc. using a DecimalFormatSymbols instance. Here is an example:
 
+        Locale locale = new Locale("en", "UK");
+
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols(locale);
+        symbols.setDecimalSeparator(';');
+        symbols.setGroupingSeparator(':');
+
+        String pattern2 = "#,##0.###";
+        DecimalFormat decimalFormat2 = new DecimalFormat(pattern2, symbols);
+
+        String number = decimalFormat2.format(123456789.123);
+        System.out.println(number);//123:456:789;123
+
+        
+        
+        
+        //Grouping Digits
+        //The DecimalFormat class has a method called setGroupingSize() which sets how many digits of the integer part to group. 
+        //Groups are separated by the grouping separator. 
+        //Here is an example:
+
+        DecimalFormat decimalFormat3 = new DecimalFormat("#,###.###");
+        decimalFormat.setGroupingSize(4);
+
+        String number3 = decimalFormat3.format(123456789.123);
+        System.out.println(number3);
+        
+        //The same effect could have been achieved by just changing the pattern string, like this:      
+        DecimalFormat decimalFormat4 = new DecimalFormat("####,####.###");
+        String number4 = decimalFormat4.format(123456789.123);
+        System.out.println(number4);
+        
+        double d = 1234567.89;    
+        System.out.println(new DecimalFormat("#.##").format(d));//1234567.89
+        boolean t=new DecimalFormat("#.##").format(d).endsWith("9");//true
+        System.out.println(t);//true
+        
+        System.out.println(new DecimalFormat("0.00").format(12345));//12345.00
+        boolean t2=new DecimalFormat("0.00").format(12345).equals(d);//false
+        System.out.println(t2);//false
+        
+        System.out.println(new DecimalFormat("#,####,####.###").format(d));//123,4567.89
         
     }
     // </editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc=" ternary ">
+        
+        static public void ternary()
+        {
+            System.out.println("W3Adda - Java Ternary Operator.");
+            String result =new String(  (10 > 15) ? "Greater" : "Smaller "     );
+            String result2=("emre".equals("emre")) ? "same" : "different" ;
+            System.out.println("result:"+result + "  result2:"+result2); //result:Smaller   result2:same
+            
+            System.out.println(5>=0 ? ( 5 >=10 ? "positive" : "digit") : "negative number "); //if ( if  else) else - digit
+            int num=-5;
+            String result3 =new String(num>=0 ? ( num >=10 ? "positive number" : "digit") : num==0 ? "zero" :  num<0 ? "negative" : "positive"); 
+            //if ( if  else)   else [if else (if else ) ]
+            System.out.println("result3:"+result3);
+        
+        
+            Scanner scan= new Scanner(System.in);
+            char ch=scan.next().charAt(0);
+            String result4= (ch<='z' && ch>='a') || (ch<='Z' && ch>='A') ? ch<=122 && ch>=97 ? "LOWERCASE" : "UPPERCASE" : "NOT LETTER";
+            //a:97 z:122 A:65 Z:90      IF ilk sembol harf ise(IF küçük harf ise lowercase değilse ELSE uppercase) ELSE not letter
+            
+            System.out.println(result4);
+            
+           
+        }
+        
+            // </editor-fold>
+
     //<editor-fold defaultstate="collapsed" desc=" IF ">
         
-        static public void IF()
+        static public int [] IF(int[] a123)
         {
             boolean transaction=true;
             int c=7;
@@ -849,7 +1592,23 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
                 System.out.println("soldier");
                 System.out.println("soldier");
 
-             // INFOOOO CTRL+SPACE OPENS  METHODS BOX   
+             // INFOOOO CTRL+SPACE OPENS  METHODS BOX  
+              int a=0,b=0;
+            if(true)
+                a++;a++;System.out.println(a);//2 yazar if in içi
+                b++;System.out.println(b);//1 yazar if in dışı
+                
+            int c1=0,d1=0;
+            if(false)
+                c1++;System.out.println(c1);//0 yazar if in içi 
+                d1++;System.out.println(d1);//1 yazar dışı
+               
+            int e1=0;
+            if(false)
+                e1++;//çalışmaz if in içi
+                e1++;//çalışır if in dışı
+                e1++;//çalısır
+                System.out.println(e1);//2 
 
 
 
@@ -907,17 +1666,11 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
             
             double value = 2;
             if (value != 0)
-            {
                     if (value > 0)
-                    {
-                            System.out.println("The result =  " +  (1 / value));
-                    }
-                 
+                            System.out.println("The result =  " +  (1 / value));            
                     else
-                    {
                             System.out.println("The result =  " +  (-1 / value));
-                    }
-            }
+
             
             
             //start of nested if statement
@@ -928,15 +1681,31 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
             //if (day == "Monday")//ıt does not work
             if ("monday".equals(dayy))
                 System.out.println("It \'s Monday.");// It 's Monday.
-            else if ("Tuesday".equals(dayy))
-            {
+            else if ("Tuesday".equalsIgnoreCase(dayy))
                 System.out.println("It \'s Tuesday.");
-            }
             else if ("Wednesday".equals(dayy))
                 System.out.println("It \'s Wednesday.");
             else
                 System.out.println("I am seating in else block"); //end of nested if statement
+            
+            
+            //reverseArray
+            int [] copy_a123=new int[a123.length];//parametredeki listeyi yeni listeye copyaladım
+            System.out.println(copy_a123);//[I@62ee68d8
+            System.out.println(Arrays.toString(copy_a123));//[0,0,0]
+            for(int i=0,j=a123.length-1 ; i < a123.length ; i++,j--){
+                copy_a123[j]= a123[i];}
+            System.out.println(Arrays.toString(copy_a123));//[3, 2, 1]
+
+            return copy_a123;
+          
     } 
+        
+    public static void printArray(int[] a)
+    {
+        for(int i : a)
+            System.out.println("Copied array element:"+i);
+    }
      
     // </editor-fold>
         
@@ -1017,6 +1786,28 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
       
         static public void SWITCH()
         {
+            Scanner scan=new Scanner(System.in);
+            System.out.println("enter a letter:");
+            String str=scan.nextLine().toUpperCase();//"a","b","A","B" girdim
+            for(int i=0;i<1;)
+            {
+                switch(str)//inside of switch can not be double orv float value since they are both not certain expression
+                {
+                    case "A":
+                        System.out.println("A");//yazar
+                        i++;
+                    case "B":
+                        System.out.println("A");//yazar
+                        i++;
+                        break;
+                    
+                    default:
+                        System.out.println("it is not a letter , write letter:");
+                        str=scan.nextLine().toUpperCase();
+                        break;
+                }
+            }
+            
             int day = 7;
             switch(day)//start of the switch statement
             {
@@ -1050,7 +1841,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
                     case 65:
                     case 66:
                     case 67:
-                    case 68://It is cool.
+                    case 68://It is cool. //temperature=68 der bırakırsam case 68: içinde sonsuz döngü olur
                     case 69://It is cool.
                             System.out.println("It is cool.");
                             break;
@@ -1077,14 +1868,14 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
             double interestRate;
             switch (year)
             {
-              case 5://For  year 5, Interest Rate is 7.25
-              case 7:
+              case 5://For  year 5,6, Interest Rate is 7.25
+              case 6:case 7:
                             interestRate = 7.25;
                             System.out.println("For  year " + year + ", "  + "Interest Rate is " + interestRate);
                      break;
               case 15:
                             interestRate = 8.50;
-                             System.out.println("For  year " + year + ", "  + "Interest Rate is " + interestRate);
+                            System.out.println("For  year " + year + ", "  + "Interest Rate is " + interestRate);
                        break;
               case 30:
                             interestRate = 9.0;
@@ -1112,15 +1903,17 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
 
         }
         
-        /*
+        
         
         double sum=0;
         for(double d=0;d<10;)
         {
             d+=0.5;
-            sum+=sum+d; //sum=0+0+0.5;    0.5 2.0 5.5
+            sum+=d; //sum=0+0+0.5;    0.5 2.0 5.5
             System.out.println("sum:"+sum);
         }
+        
+        
         
         int total=0;
         for(int i=0;i<5;++i)//for loop'ta ++i or i++ affect value after 1 squence finished
@@ -1131,7 +1924,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         total=0;//made total 0 from 10
          for(int i=0;i<5;i++)
         {
-            total+=i;//0 1 3 6 
+            total+=i;//0 1 3 6 10
             System.out.println("total:"+total);         
         }
          
@@ -1160,12 +1953,13 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         
 
          
-            
-          */      
-                        
-         
-        
-        
+        /*
+            for(int i=0, j=0; (i+j <10 ); i++, j++){}
+            for(;;) ifadesi ile sonsuz döngü oluşturulabilir.
+            for(int i = ; i<10 ; i++); {
+            //compiler hatası vermez ama mantık hatası vardır,
+        */
+             
         
          // QUESTION-3
         
@@ -1174,7 +1968,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         int line=object1.nextInt(),q=1;       
         for(int a=1;a<=line;a++)
         {
-            for(int i=line-a;i>=1;i--)
+            for(int i=(line-a);i>=1;i--)
             {
                 System.out.print("  ");
             }
@@ -1194,7 +1988,11 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
             }
             System.out.println(" ");
         }
-        
+        /*
+              1  
+            2 1 2  
+          3 2 1 2 3 
+        */
         
         // QUESTION 4
         Scanner object2=new Scanner(System.in);
@@ -1202,46 +2000,51 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         int y=object2.nextInt(),k=1;
    
 
-        for(int x=1;x<=y;x++)
+        for(int x=1;x<=y;x++)//satır sayısı
         {
-            for(int t=(y-x);t>0;t--)
+            for(int t=(y-x);t>0;t--)//bosluk sayısı
             {
                 System.out.print("  ");
             }
-            for(int z=1;z<=(2*x-1);z++)
+            for(int z=1;z<=(2*x-1);z++)//satırlardaki sayı sayısı
             {
                 if (z<=x)
-                    k=(int)Math.pow(2,(z-1));
+                    k=(int)Math.pow(2,(z-1));//1 2 4 8 16
                 else
                     k/=2;   
-                System.out.print(k+" ");
+                System.out.print(k+" ");//8 4 2 1
             }
             System.out.println(" ");
         }
-       
+       /*
+        1  
+      1 2 1  
+    1 2 4 2 1  
+  1 2 4 8 4 2 1  
+1 2 4 8 16 8 4 2 1  
+        */
         
         
         
         
         
         double grades[ ] = {88, 99, 73, 56, 87, 64};
-		double sum, average;
-		sum = 0;
-		int index;
-		for ( index = 0; index <grades.length; ++index)	//try using ++index in the header
-		{
-			sum += grades[index];	//sum = sum + grades[index];
-                        System.out.println(index);
+        double sum3=0, average3;
+        int index;
+        for ( index = 0; index <grades.length; ++index)	//try using ++index in the header
+        {
+            sum3 += grades[index];	//sum = sum + grades[index];
+            System.out.println(index);// 0 1 2 3 4 5
 
-                }
-			System.out.println(index);
-			average = sum / grades.length;
-			System.out.println(average+" "+sum+"Average grade =  " + DecimalFormat.getInstance().format( average) );
+        }
+        System.out.println(index);//6
+        average3 = sum3 / grades.length;
+        System.out.println(average3+" "+sum3+"Average grade =  " + DecimalFormat.getInstance().format( average3) );
     
     
-    for (int indexx = 0, doubled = 0; indexx <= 5; indexx++, doubled = 2*indexx)
+    for (int indexx = 0, doubled = 0,triple=0; indexx <= 5; indexx++, doubled = 2*indexx, triple=3*indexx)
     {
-            System.out.println("Loop index " + indexx + " doubled equals " + doubled);
+            System.out.println("Loop index " + indexx + " doubled equals " + doubled+ " triple equals " + triple);
     }
     
     
@@ -1263,24 +2066,56 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
     System.out.println(value + "! = " + factorial);
 
     
+   
+
+        
+    
     double arreyy[ ] [ ] = {{1, 2, 3}, {3, 2, 1},  {1, 2, 3}};
-    System.out.println(Arrays.deepToString(arreyy));
-    int summm = 0, total = 0;
+    System.out.println(Arrays.toString(arreyy));//[[D@146ba0ac, [D@4dfa3a9d, [D@6eebc39e]
+        System.out.println(Arrays.deepToString(arreyy));//[[1.0, 2.0, 3.0], [3.0, 2.0, 1.0], [1.0, 2.0, 3.0]]
+    int summm = 0; total = 0;
 
     for (int i = 0; i < arreyy.length; i++)
     {
         for(int j = 0; j < arreyy[i].length; j++)
         {
-                System.out.print(arreyy[i][j]);
+                System.out.print(arreyy[i][j]+" ");
 
-                summm += arreyy[j][i];
+                summm += arreyy[i][j];
                 total++;
         }
         System.out.println();
+        System.out.println(summm);
     }
 
         System.out.println("Average array value = " + (summm / total));
     
+        
+        
+        //tags!!!!!
+        outerLoop:
+        for(int a=0 ; a<5 ; a++)
+        {
+            innerLoop:
+            for(int b=0 ; b<3 ; b++)
+            {
+                System.out.println("a:"+a +" - b:"+b);
+                if(a==3 && b==2)
+                {
+                    //break;//buradaki 2 break innerLoop'u durdurur
+                    //break innerLoop;
+                    break outerLoop;//outerLoop'u durdurur
+                }
+   
+            }
+        }
+        
+        for(int i=0 ; i<2 ; i++)
+            return;//bbburadaki return FOR(); methoddtan cıkartıcak bizi
+        
+        for(int i=0 ; i<2 ; i++)//bu döngü calısmaz
+            System.out.println("i:"+i);
+
         
         
         
@@ -1302,6 +2137,71 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         }
     }
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Varargs(method)">
+
+    public static void Varargs()
+    {        
+        /*bir methodumuz var
+        public static void abc(int a ,int b){}
+        public static void abc(int a ,int b, int c ){}//overloading
+        eger hep aynı primitive data type i aticaksak hep overloadingle
+        uğrasmayalım ne kadar deger atıcaksak varargs yöntemi ile atayalım 
+        */
+        
+        Varargs(1,2,3);
+        Varargs(1,2,3,4);
+        
+        /*void method(String... gfg, int... q)
+        {
+            Compile time error as there are two
+            varargs
+        }
+        */
+    }
+    
+    public static void Varargs(int ...a)//
+    {
+    
+        System.out.println(a[0]);// 1 parametrelerin indexleri olur
+        System.out.println(a[1]);// 2 parametrelerin indexleri olur
+        System.out.println(a[2]);// 3 parametrelerin indexleri olur
+        System.out.println("Number of arguments: " + a.length); 
+  
+        // using for each loop to display contents of a 
+        for (int i: a) 
+            System.out.print(i + " "); 
+        System.out.println(); 
+     
+       
+            
+        printName("Ali");
+        printName("Ali", "Kahraman");
+        printName("Ali", "Can", "Kahraman");
+        
+        valueChar("Character: ",'a');
+        valueChar("Character: ",'a', 'b');
+
+    }
+
+    public static void printName(String... n) {
+        for(String w: n) {
+            System.out.print(w + " ");
+        }
+        System.out.println("");
+    }
+
+    public static void valueChar(String s, char... c) {
+        for(char w: c) {
+            System.out.print(s);
+            System.out.print(w);
+        }
+        System.out.println("");
+    }  
+        
+        
+    
+        // </editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" WHILE - do while ">
 
@@ -1345,8 +2245,10 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
 
         int cou=0;
         do   
-        { System.out.println(cou+"hello");//0 hello
-        cou++; }   
+        { 
+            System.out.println(cou+"hello");//0 hello
+            cou++; 
+        }   
         while (cou<-1);//condition is not true 
 
 
@@ -1359,7 +2261,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
 
         int co=0;
         do   
-        { System.out.println(co+"emre");}                 
+        { System.out.println(co+"emre");}  //0               
         while (co++<10);//gelirken 0-9 yazarken 1-10
 
         int c=0;
@@ -1381,11 +2283,13 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
                 break; 
             }
             balance-=9;
-            System.out.println(balance);//runs 1 after breaks
+            System.out.println(balance);
         }
 
        int s=0,item=0;
-       do{ item++; s+=item; System.out.println(s);/*1 3 6*/ if(s>4) break; System.out.println(s);/*1 3 */} while(item<5);
+       do{ item++; s+=item; System.out.println(s);/*1 3 6*/ 
+       if(s>4) break; System.out.println(s);/*1 3 */} 
+       while(item<5);
        
        
        
@@ -1413,7 +2317,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
        do{
            sum+=number%10;//to add the last digit of the number
            number=number/10;//to decrease the digits of number
-           System.out.printf("SUM:%d - NUMBER:%d n%",sum,number);
+           System.out.printf("SUM:%d - NUMBER:%d %n ",sum,number);
          } 
         while(number==0);
          
@@ -1427,7 +2331,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         
     // </editor-fold>
         
-    //<editor-fold defaultstate="collapsed" desc="showINPUT ">
+    //<editor-fold defaultstate="collapsed" desc="JOptionPane.showInputDialog ">
     public static void showINPUTdialog()
     {   
         //import javax.swing.*;	//required for our input box
@@ -1450,7 +2354,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
          //getting inputs
         cev = Double.parseDouble(JOptionPane.showInputDialog("Enter first number"));
         dev = Double.parseDouble(JOptionPane.showInputDialog("Enter second number"));
-        double result  = max();	//calling statement for the method max
+        double result  = Math.max(cev,dev);	//calling statement for the method max
         System.out.println("Maximum of " + a + " and " + b + " is "  + result);
     }
     
@@ -1460,7 +2364,86 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
     //<editor-fold defaultstate="collapsed" desc=" SCANNER ">
     public static void SCANNER()
     { 
-        /*
+        Scanner scanner = new Scanner("Emre Duman");
+        String namee=scanner.nextLine();//scanner nesnesi emre dumanı tutuyor ve bize veri girmek için sormaz
+        System.out.println(namee);//Emre Duman
+        
+        //1.Java Scanner hasNext () Method:
+         //Create Scanner object  
+        Scanner scan1 = new Scanner("Hello World!");  
+        //Printing the delimiter used  
+        System.out.println("Delimiter:" + scan1.delimiter()); //Delimiter:\p{javaWhitespace}+ 
+        //Print the Strings  
+        //This method returns true if and only 
+        //if this scanner has another token.
+        while (scan1.hasNext())//true
+        {  
+            System.out.println(scan1.next()); //2 kez calısır emre ve duman yazar
+        }  
+        //Close the scanner  
+        scan1.close();  
+            
+        //2.Java Scanner hasNext (String pattern) Method:
+        String s = "Hello, This is JavaTpoint.";  
+        //Create scanner Object and pass string in it  
+        Scanner scan2 = new Scanner(s);  
+        //Check if the scanner has a token  
+        System.out.println("Result: " + scan2.hasNext());//Result: true  
+        //Print the string  
+        System.out.println("String: " +scan2.nextLine());  //String: Hello, This is JavaTpoint.
+        //Check if the scanner has a token after printing the line  
+        System.out.println("Final Result: " + scan2.hasNext());//Final Result: false
+        //Close the scanner  
+        scan2.close();  
+
+        String str = "JavaTpoint.com 15 + 15 = 18.0";  
+        Scanner scan3 = new Scanner(str);  
+        //Checking scanner's next token matches "c"  
+        System.out.println("Result: "+scan3.hasNext("JavaTpoint.com")); //Result: true 
+        //Checking scanner's next token matches "="  
+        System.out.println("Result: "+scan3.hasNext("="));  //Result: false
+        //Print the rest of the string  
+        System.out.println("Rest of String: "+scan3.nextLine());  //Rest of String: JavaTpoint.com 15 + 15 = 18.0
+        scan3.close();  
+        
+        
+        
+        
+        
+        //NEXT NEXTLINE
+        //String'leri kullanicidan almak icin ya next() veya nextLine()
+        //kullaniriz. next() tek kelimelik String'ler icin kullanilir.
+        //Space gorunce String'i almayi birakir.
+        //nextLine() girilen tum String'i almak icin kullanilir
+        
+        //nextLine()'dan önce next gelirse nextLine() calısmaz
+		
+                Scanner scan = new Scanner(System.in);
+		System.out.println("string giriniz:");
+		String test=scan.nextLine();	//1 2 3
+		System.out.println("test:"+test);
+		
+		System.out.println("string giriniz:");
+		String test2=scan.nextLine();//deger gireriz/ a b c girdim   test2=a b c
+		System.out.println("string giriniz:");
+		String name=scan.nextLine();// d e f  girdim	   name=d e f
+		String name1=scan.next();// 1 2 3 girdim 		   name1=1
+		String name2=scan.nextLine();//tekrardan girmedim/ name2= 2 3 oldu
+		String name22=scan.next();//4 5 6 girdim		   name22=4 yazdı	
+		System.out.println("test  "+test+"  test2"+test2+"   name:"+ name +"  name1:"+ name1 +"  name2:"+ name2 +"  name22:"+ name22 );
+		System.out.println("string giriniz:");
+		String name3=scan.next();//tekrardan girmedim 		name3=5 oldu
+		String name4=scan.next();//tekrardan girmedim 		name4=6 oldu
+		String name5=scan.nextLine();// k l m girdim		name5 boş
+		String name6=scan.nextLine();//p r s girdim			name6=k l m oldu
+		String name7=scan.nextLine();//x y z girdim			name7=p r s oldu
+		String name8=scan.next();//tekrardan girmedim       name8=x oldu
+		System.out.println("   name3: " + name3 +
+				"   name4: "+name4+"  name5:"+name5+"  name6:"+name6+
+				"  name7:"+name7+"  name8:"+name8);
+
+                //scan.close();
+        
         Scanner object1 = new Scanner(System.in);
         System.out.println("ENTER INVESTMENT AMOUNT:");
         //float investment_amount=object1.nextInt();
@@ -1494,34 +2477,29 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         System.out.printf("INVESTMENT AMOUNT: %.2f %nANNUAL INTEREST RATE: %.2f%nNUMBER OF YEARS:%.2f%nACCUMULATED VALUE IS:%.2f",investment_amount,interest_rate,investment_duration, future_investment_amount);
    
     
-    */
-
-        Scanner keysIn = new Scanner(System.in);
-        System.out.print("Enter an integer: ");
-        String strInteger = keysIn.nextLine();
-        System.out.print("Enter a double: ");
-        String strDouble = keysIn.nextLine();   
-        System.out.print("Type some text: ");
-        String strText = keysIn.nextLine();
-        System.out.println(strInteger);
-        System.out.println(strDouble);
-        System.out.println(strText);
+        
+       
+        
     
+    //charNext(); yok
+    Scanner scan01= new Scanner(System.in);
+    char letter=scan01.next().charAt(0);//girilen metnin ilk harfini alır
+    System.out.println("char: "+ letter);
     
     }        
 // </editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc=" MESSAGEBOX ">
+    //<editor-fold defaultstate="collapsed" desc=" JOptionPane.showMessageDialog  ">
     public static void showMESSAGEdialog() 
     {                
           //  JOptionPane.showMessageDialog("Hello World");  ERROR
           //JOptionPane.showMessageDialog("Hello World",JOptionPane.INFORMATION_MESSAGE);  ERROR
         
           JOptionPane.showMessageDialog(null, "Hello World");// İ LETTER WITH CIRCLE  WİLL BE SHOWED - JOptionPane.INFORMATION_MESSAGE title= message
+          //System.exit(1);
           JOptionPane.showMessageDialog (null, "hellooo", "Title", JOptionPane.INFORMATION_MESSAGE);   
           JOptionPane.showMessageDialog (null, "warning message", "Title", JOptionPane.WARNING_MESSAGE);//warning_message cant be written without title
-          JOptionPane.showMessageDialog (null, " error "
-                  + "Message", "Title", JOptionPane.ERROR_MESSAGE);//error_message cant be written without title
+          JOptionPane.showMessageDialog (null, " error Message", "Title", JOptionPane.ERROR_MESSAGE);//error_message cant be written without title
                     
           String namee = JOptionPane.showInputDialog("Type your nameeeeee please");
           String nameee = JOptionPane.showInputDialog("Type your nameeeeee please","title");
@@ -1554,46 +2532,111 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         "Zoo Quiz", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
         System.out.println(selection);
 
+        
+        
+        JFrame f=new JFrame();  //null diyordum ben
+        JOptionPane.showMessageDialog(f,"Hello, Welcome to Javatpoint.","title",JOptionPane.INFORMATION_MESSAGE);  
+        
+        
+        
+        
+        
     }
     // </editor-fold>
    
     //<editor-fold defaultstate="collapsed" desc="ARRAY">
-    public static void ARRAY() 
+    public static int[] ARRAY(int[] bjk) 
     {  
+        //INITIALIZING - CREATING - DECLARING ARRAY       
+        String[] array ={"a","b","c","d"};
+        array=new String[10];
+        System.out.println(array[0]);//null
+        //String array [4]={"a","b","c","d"};//ERROR
+        String arrayy[];  
+        arrayy = new String []{"a","a","a","a","a"}; 
+        //arrayy = new String [5]{"a","a","a","a","a"}; //ERROR
+
+        int[] myIntArray = new int[3];//THIS LINE IS TRUE
+        //myIntArray[] = {1, 2, 3};//THIS LINE IS WRONG
+   
+        int[] myIntArrayY = new int[]{1, 2, 3};//correct
+        
+        String[] StringArray = new String[3];//TRUE
+        String [] aaarrAAy = new String []{"a","a","a","a","a"}; //CORRECT
+        String array54[]={"1","3"};
         
         
-        int[] sourceArray = {2, 3, 1, 5, 10};
+        //ARRAY REFERENCE - Arrays.toString();
+            /*
+            array1=array2; dersek reference number ları ve içerikleri aynı olur
+            birinde yapılacak değişiklik diğerini de otomatik olarak etkiler.
+            */
+        int [] a14=new int[4]; a14[0]=1; System.out.println(Arrays.toString(a14));//[1, 0, 0, 0]
+        
+        int[] w1={1,2,3};        int[] w2={4,5,6};   w2=w1;  System.out.println(Arrays.toString(w2));//[1, 2, 3]
+        w1[0]=9;System.out.println(Arrays.toString(w2));//[9, 2, 3]
+
+        
+        //readdressing an object
+        int[] sew={1,2,3};System.out.println(Arrays.toString(sew));
+        sew=new int[5];System.out.println(Arrays.toString(sew));
+        
+        
+        //DEFAULT ARRAY VALUES
+        int a1 []=new int [2]; //listenin içi boş
+        //a1=new int[3]; yeniden  aynı identifier ile array olusturdum 
+        String [] a2 =new String [2]; //listenin içi boş
+        char [] a3 =new char [2]; //listenin içi boş
+        double [] a4 =new double [2]; //listenin içi boş
+        float [] a5 =new float [2]; //listenin içi boş
+        boolean [] a6 =new boolean [2]; //listenin içi boş
+        long [] a7 =new long [2]; //listenin içi boş
+        short [] a8 =new short [2]; //listenin içi boş
+        var a9 =new String [2]; //listenin içi boş
+        for(int i=0; i<a1.length;i++)
+        {
+            System.out.println(a1[i]+" "+a2[i]+"- "+a3[i]
+                    +" -"+a4[i] +" "+a5[i]+" "+a6[i]
+                    +" "+a7[i]+" "+a8[i]+" "+a9[i]);
+            //0 null-   -0.0 0.0 false 0 0 null
+        }
+         
+        
+        
+        //COPYING ARRAY
+        int[] sourceArray = {2, 3, 1, 5, 10};System.out.println(sourceArray);//[I@7f560810
         int[] targetArray = new int[sourceArray.length];
-        for (int i = 0; i < sourceArray.length; i++){
+        for (int i = 0; i < sourceArray.length; i++)
+        {
                 targetArray[i] = sourceArray[i];
-                System.out.println(targetArray[i]);}
+                System.out.print(targetArray[i]+" ");//2 3 1 5 10 
+        }
 
         
         
-        
-        Scanner object=new Scanner(System.in);
+        //ENTERING VALUES AND PRINTING
+        Scanner obje=new Scanner(System.in);
         int[] circleArray = new int[4];
         for (int i = 0; i < circleArray.length; i++)
         {
-            System.out.printf("Enter %d. Element:",i+1,"\n");
-            circleArray[i]=object.nextInt();
+            System.out.printf("\nEnter %d. Element:",i+1,"\n");
+            circleArray[i]=obje.nextInt();
         }
         for (int i = 0; i < circleArray.length; i++)
             System.out.println(circleArray[i]);
         
-        //method ile array'i çağırdım,methodun iççinde liste elemanlarını topla dedim
        
       
         
         
-        
+        //ENTERING VALUES IN 2D ARRAY AND PRINTING 
         int matrix[][] = new int[3][3];
         for (int i=0; i<3; i++)
         {
             for (int j=0; j<3;j++)
             { 
                 System.out.printf("Enter %d.%d Element:",i,j,"%n");
-                 matrix[i][j]=object.nextInt();
+                 matrix[i][j]=obje.nextInt();
             }
         }
         
@@ -1601,7 +2644,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         {
             for (int j=0; j<3;j++)
             { 
-                 System.out.print(matrix[i][j]);
+                 System.out.println(matrix[i][j]);
             }
             System.out.println();
         }
@@ -1610,7 +2653,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
      
         
         
-        
+        //INITIALIZING AND CREATING ARRAY
         Scanner object4=new Scanner(System.in);
         System.out.printf("TYPE A NUMBER:");
         int size=object4.nextInt();
@@ -1618,9 +2661,10 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         double[] rounfall = new double[size];
         for (int i = 0; i < rounfall.length; i++)
         {
-            rounfall[i]=object.nextDouble();
+            rounfall[i]=obje.nextDouble();
         }
-  
+   
+        //FINDING MAX VALUE
         
         double max=rounfall[0];
         for(int t=1;t<size;t++)
@@ -1631,6 +2675,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
             }
         }
       
+        //FINDING MIN VALUE
         double min=rounfall[0];
         for(int a=1;a<rounfall.length;a++)
         {
@@ -1640,68 +2685,35 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
             }
         }
       
-        double number = 0;
+        //TOTAL OF VALUES
+        double total = 0;
         for (int i = 0; i < rounfall.length; i++)
         {         
-            number= number+rounfall[i];               
+            total+=rounfall[i];               
         }
          
-        System.out.println("the average of all elements="+ (number/rounfall.length));
+        System.out.println("the average of all elements="+ (total/rounfall.length));
         System.out.println("the biggest double="+max);
         System.out.println("the smallest double="+min);
  
 
-        //String array [4]={"a","b","c","d"};//ERROR
-        String array []={"a","b","c","d"};
-        String arrayy[];
         
-        //arrayy = new String []{"a","a","a","a","a"}; 
-        //arrayy = new String [5]{"a","a","a","a","a"}; //ERROR
-
- 
-             
-        int[] myIntArray = new int[3];//THIS LINE IS TRUE
-        //myIntArray = {1, 2, 3};//THIS LINE IS WRONG
-
-        
-        int[] myIntArrayY = new int[]{1, 2, 3};//correct
         
 
-        
-        String[] StringArray = new String[3];//TRUE
-        String[] sStringArray = {"a", "b", "c"};//true
-        String[] S = new String[]{"a"};//TRUE
-
-        
-
-        
-        String[] arrAAyv;
-        arrAAyv=new String [] {"10"};
-        String [] aaarrAAy = new String []{"a","a","a","a","a"}; //CORRECT
         
         /*
-        String[] myStringArray = new String[3];
-        String[] arrayy =new String []{"a","a","a","a","a"};
-        String[] myStringArrayy= {"a", "b", "c"};
-
-        int[] myIntArray = new int[]{1, 2, 3};
-        int[] arrayyy= {1, 2, 3};
-
-     
-
-
         int x = 30;
         int[] numbers = new int[x];
         x = 60;
         System.out.println("x is " + x);//60
-        System.out.println("The size of numbers is " + numbers.length);//30
-        
+        System.out.println("The size of numbers is " + numbers.length);//30       
         */
         
+        //SYSTEM.ARRAYCOPY()
         int a[]= {1,2,3,4,3,2,1}; //source array  
         int b[]= {5,6,7,8,7,6,5}; //destination array  
         int src[],srcPos,  dest[],destPos,length;  
-        src=a;  
+        src =a;  
         srcPos=1;  
         dest=b;  
         destPos=2;  
@@ -1725,8 +2737,8 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         
         
         
+        //SYSTEM.ARRAYCOPY() - Arrays.toString();
         String[] names = {"Alex", "Brian", "Charles", "David"};
-
         //Using System.arraycopy() method - Equally efficient but less readable
         String[] copyOfNames = new String[names.length];
         System.arraycopy(names, 0, copyOfNames, 0, copyOfNames.length);
@@ -1734,75 +2746,122 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         {
             System.out.println(copyOfNames[i]);
         }
-        System.out.println(copyOfNames);//[Ljava.lang.String;@15db9742
-        System.out.println(Arrays.toString(names));         //[Alex, Brian, Charles, David]
+        System.out.println("names:"+names);//[Ljava.lang.String;@15db9742
+        System.out.println("copyOfNames:"+copyOfNames);//[Ljava.lang.String;@15db9742
+        System.out.println(java.util.Arrays.toString(names));         //[Alex, Brian, Charles, David]
         System.out.println(Arrays.toString(copyOfNames));   //[Alex, Brian, Charles, David]
-
         
+        //Arrays.Equals();
+        //Arrays.hashCode(names);
+        //(names == copyOfNames)
+        System.out.println("names == copyOfNames : " + (names == copyOfNames) );//false
+        System.out.println("Arrays.Equals() --> "+Arrays.equals(copyOfNames,names));//true
+        System.out.println("Arrays.Equals() --> "+copyOfNames.equals(names));//true
+        System.out.println("names.hashCode() -->"+names.hashCode()+"\ncopyOfNames.hashCode(): -->"+copyOfNames.hashCode());
+        System.out.println("names.hashCode() -->"+java.util.Arrays.hashCode(names)+"\ncopyOfNames.hashCode(): -->"+Arrays.hashCode(copyOfNames));
         
+        //SYSTEM.ARRAYCOPY();
         int[] source = {3, 4, 5};
         int[] t = new int[source.length];
-        System.arraycopy(source,0, t,0,2);//3 4 0
+        System.arraycopy(source,0, t,0,2);//3 4 0 length:2
         System.out.println(Arrays.toString(t));//t array coverted from int to string
         System.arraycopy(source,0, t,0,t.length);//3 4 5 
         System.out.println(Arrays.toString(t));
 
 
+        //RESIZE THE ARRAY
         int[] myList;
-        myList = new int[10];
-        System.out.println(myList.length);
-        // Some time later you want to assign a new array to myList
-        myList = new int[20];    
-        System.out.println(myList.length);
+        myList = new int[10];  System.out.println(myList.length);
+        myList = new int[20];  System.out.println(myList.length);
 
         
+        
+        
+        //Arrays.fill(); - Arrays.equals();
         int[] list1 = {2, 4, 7, 10};
         java.util.Arrays.fill(list1, 7);
-        System.out.println(java.util.Arrays.toString(list1));
+        System.out.println("list1:"+java.util.Arrays.toString(list1));//list1:[7, 7, 7, 7]
 
         int[] list2 = {2, 4, 7, 10};
-        System.out.println(java.util.Arrays.toString(list2));
-        System.out.print(java.util.Arrays.equals(list1, list2));
+        System.out.println(java.util.Arrays.toString(list2));//[2, 4, 7, 10]
+        System.out.println(java.util.Arrays.equals(list1, list2));//false
 
-        
+        list1=list2;///esitledim referansı da degerleri de aynı
+        System.out.println(java.util.Arrays.toString(list1));//[2, 4, 7, 10]
+        System.out.println(java.util.Arrays.equals(list1, list2));//true
+        System.out.println("list1 == list2: "+ (list1 == list2));//true
+        System.out.println(Arrays.hashCode(list1));// esittir Arrays.hashCode(list2)
+        list1[1]=10;
+        System.out.println(Arrays.hashCode(list1));
+
+        System.out.println(java.util.Arrays.equals(list1, list2));//true olucak cümkü list2[1] de 10 oldu
+
+        //java.util.Arrays.fill()
         int[] list = {2, 4, 7, 10};
         java.util.Arrays.fill(list, 7);
         System.out.println(java.util.Arrays.toString(list));// [7, 7, 7, 7]
-        java.util.Arrays.fill(list, 1, 3, 8);
-        System.out.println(java.util.Arrays.toString(list));// [7, 7, 7, 7]
-        System.out.print(java.util.Arrays.equals(list, list));
+        Arrays.fill(list, 1, 3, 8);//from to value index 1 ve 2 yi 8 yap
+        System.out.println(java.util.Arrays.toString(list));// [7, 8, 8, 7]
+        System.out.println(java.util.Arrays.equals(list, list2));//false
+        
+        
+        //split()
+        String myString = "Merhaba bu benim dunyam";
+        String[] words = myString.split(" - ");
+        System.out.println("stringi string arra yapar  "+words);//[Ljava.lang.String;@604ed9f0
+        System.out.println(words[0]+" lenght "+words.length);//Merhaba bu benim dunyam lenght 1
+        System.out.println(Arrays.toString(words));//[Merhaba bu benim dunyam]
+
+        String[] words2 = myString.split("");
+        System.out.println(Arrays.toString(words2));//[M, e, r, h, a, b, a,  , b, u,  , b, e, n, i, m,  , d, u, n, y, a, m]
+
+        String[] words3 = myString.split(" ");
+        System.out.println(Arrays.toString(words3));//[Merhaba, bu, benim, dunyam]
+
+        // Verilen bir cumledeki bosluklar haric character sayisini bulunuz.	
+        String str = "Verilen bir cumledeki bosluklar haric character sayisini bulunuz.";	
+        str = str.replace(" ", ""); // str = "Verilenbircumledekibosluklarhariccharactersayisinibulunuz."
+        String harf[] = str.split("");
+        System.out.println(harf.length);
+	    
+	//Another Way
+        String strr3 = "Verilen bir cumledeki bosluklar haric character sayisini bulunuz.";
+        String kelime[] = strr3.split(" ");
+        int boslukSayisi = kelime.length - 1;
+        System.out.println(boslukSayisi);
+        String character[] = strr3.split("");
+        System.out.println(character.length - boslukSayisi);
         
         
         
         
+        
+        // System.arraycopy
+        int[ ] ourceArray = {2, 3, 1, 5, 10};//creating, and loading array
 
-    int[ ] ourceArray = {2, 3, 1, 5, 10};//creating, and loading array
+        int[ ] argetArray = new int[ourceArray.length];	//Creating 5 elements long array
 
-    int[ ] argetArray = new int[ourceArray.length];	//Creating 5 elements long array
+        System.arraycopy(sourceArray, 0, argetArray, 0,ourceArray.length);
 
-    System.arraycopy(sourceArray, 0, argetArray, 0,ourceArray.length);
+        for (int i = 0; i < ourceArray.length; i++)
+           System.out.println(ourceArray[i] + "\t\t" + argetArray[i]);
 
-    for (int i = 0; i < ourceArray.length; i++)
-       System.out.println(ourceArray[i] + "\t\t" + argetArray[i]);
-
-    Arrays.sort(ourceArray);
-    Arrays.sort(argetArray);
-    for (int i = 0; i < ourceArray.length; i++)
-        System.out.println(ourceArray[i] + "\t\t" + argetArray[i]);
+        Arrays.sort(ourceArray);
+        Arrays.sort(argetArray);
+        for (int i = 0; i < ourceArray.length; i++)
+            System.out.println(ourceArray[i] + "\t\t" + argetArray[i]);
 
     
      
-
-    int[] arr = {13, 7, 6, 45, 21, 9, 101, 102}; 
-  
+        //Arrays.sort();
+        int[] arr = {13, 7, 6, 45, 21, 9, 101, 102}; 
         Arrays.sort(arr); 
-  
-        System.out.printf("Modified arr[] : %s", Arrays.toString(arr)); 
+        System.out.printf("Modified arr[] : %s", Arrays.toString(arr)); //Modified arr[] : [6, 7, 9, 13, 21, 45, 101, 102]
     
     
     
     
-    
+    //System.arraycopy()-Arrays.sort()-Arrays.binarySearch()
     int[ ] sourcArray = {2, 3, 1, 5, 10};//creating, and loading array
 
     int[ ] targeArray = new int[sourcArray.length];	//Creating 5 elements long array
@@ -1813,7 +2872,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
     Arrays.sort(targeArray);
 
     int j = Arrays.binarySearch (sourcArray, 13);
-    System.out.println ("j = " + j);
+    System.out.println ("j = " + j);//j = -6
 
     System.out.println("sourceArray" + "\t" + "targetArray");
 
@@ -1823,8 +2882,19 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
                 
                 
                 
-                
-                
+        //Let us create different integers arrays 
+        int[] arr1 = new int [] {1, 2, 3, 4}; 
+        int[] arr2 = new int [] {1, 2, 3, 4}; 
+        int[] arr3 = new int [] {1, 2, 4, 3}; 
+          
+        System.out.println("is arr1 equals to arr2 : " + 
+                                Arrays.equals(arr1, arr2)); //is arr1 equals to arr2 : true
+        System.out.println("is arr1 equals to arr3 : " + 
+                                Arrays.equals(arr1, arr3));//is arr1 equals to arr3 : false
+    
+        
+        
+        Arrays.fill(arr1, 1, 3, 5 );//1,2 indexlerine 5 atar
                 
                 
                 
@@ -1835,7 +2905,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         float floatArr[] = {10.2f,15.1f,2.2f,3.5f}; 
         short shortArr[] = {10,20,15,22,35}; 
   
-        Arrays.sort(byteArr); 
+        Arrays.sort(byteArr,1,3); //1-2-3 indekslerini sıralarlar
         Arrays.sort(charArr); 
         Arrays.sort(intArr); 
         Arrays.sort(doubleArr); 
@@ -1845,9 +2915,9 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         byte byteKey = 35; 
         char charKey = 'g'; 
         int intKey = 22; 
-        double doubleKey = 1.5; 
+        double doubleKey = 1.5; // 1.5yok
         float floatKey = 35; 
-        short shortKey = 5; 
+        short shortKey = 5; //5 yok
   
         System.out.println(byteKey + " found at index = "
                            +Arrays.binarySearch(byteArr,byteKey)); 
@@ -1856,23 +2926,23 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         System.out.println(intKey + " found at index = "
                            +Arrays.binarySearch(intArr,intKey)); 
         System.out.println(doubleKey + " found at index = "
-                           +Arrays.binarySearch(doubleArr,doubleKey)); 
+                           +Arrays.binarySearch(doubleArr,doubleKey)); //yoksa -1 döndürür
         System.out.println(floatKey + " found at index = "
                            +Arrays.binarySearch(floatArr,floatKey)); 
         System.out.println(shortKey + " found at index = "
                            +Arrays.binarySearch(shortArr,shortKey)); 
     
     
-
-
+        
 
     double myListt [ ] = new double [2];
 
     //Loading array with user input
     for(int i= 0; i < myListt.length; i++)
     {
-            double d = Double.parseDouble(JOptionPane.showInputDialog("Enter a value for rainfall"));
-            myListt[i] = d;
+        Scanner scan =new Scanner(System.in);
+        //double d = Double.parseDouble(JOptionPane.showInputDialog("Enter a value for rainfall"));
+        double d=scan.nextDouble();      myListt[i] = d;
     }
 
     double sum  = 0;
@@ -1886,6 +2956,8 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
 
 
 
+    
+    
     int matrixx[][] = new int[10][10];
 
     //loading 2d array
@@ -1902,7 +2974,7 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
     {
         for (int jl=0; jl<matrixx[i].length;jl++)
         {
-            System.out.print (matrix[i][jl] + "\t");
+            System.out.print (matrixx[i][jl] + "\t");
         }
         System.out.println();
       }
@@ -1910,40 +2982,123 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
 
 
 
-    int [ ] [ ] matrxx = { {1,2}, {4,5,}, {4,6}, {4,5,6,7,8,9} };
+        int [ ] [ ] matrxx = { {1,2}, {4,5,}, {4,6}, {4,5,6,7,8,9} };
 
-//Print 2d array
-    for (int i=0; i<matrxx.length; i++)
-    {
-        for (int ji=0; ji<matrxx[ji].length;ji++)
+    //Print 2d array
+        for (int i=0; i<matrxx.length; i++)
         {
-            System.out.print (matrxx[i][ji] + "\t");
+            for (int ji=0; ji<matrxx[ji].length;ji++)
+            {
+                System.out.print (matrxx[i][ji] + "\t");
+            }
+                System.out.println();
         }
-            System.out.println();
+
+        System.out.println ("matrix.length = " + matrxx.length );//matrix.length = 4
+        System.out.println ("matrix[2].length = " + matrxx[3].length );//matrix[2].length = 6
+
+
+
+        int arr22[][]={{1,2},{5},{6,7,8}};
+        int sum1=0;
+
+        for (int[] w:arr22)
+        {
+            for (int z:w)
+            {
+                System.out.print(z+" ");
+                sum1=sum1+z;
+            }		
+            System.out.println("");
+        }
+
+        System.out.println(sum1);//29	
+
+        
+        //Arrays.deepToString();
+        int arra[][] = new int[3][4];
+        System.out.println(Arrays.toString(arra)); // [[I@71423665, [I@20398b7c, [I@6fc6f14e]
+        System.out.println(Arrays.deepToString(arra)); // [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+
+        int arra123[][] = new int[][]{{1,2,3},{4,5},{6}};
+        System.out.println("arra123:"+Arrays.toString(arra123)); // arra123:[[I@20398b7c, [I@6fc6f14e, [I@56235b8e]
+        System.out.println(Arrays.deepToString(arra123)); //[[1, 2, 3], [4, 5], [6]]
+       
+        
+        
+        bjk[0]=10;
+        System.out.println(Arrays.toString(bjk));//[10, 2, 3, 4, 5] 
+        //referanslar parametre ile tasınır
+        return bjk;//[I@52a86356
     }
-
-    System.out.println ("matrix.length = " + matrxx.length );
-    System.out.println ("matrix[2].length = " + matrxx[3].length );
-
-
-
-
-                  
-                  
-                  
-                      	
-   
-    }
-    // </editor-fold>
+    
+    
+    // </editor-fold>    
     
     //<editor-fold defaultstate="collapsed" desc="ARRAYLIST">
     public static void ARRAYLIST()
-    {
-       ArrayList<Integer> integers =new ArrayList<Integer>(1);//1 olsada artırabilirim
+    {      
+        //Array'lerde length sabittir, degistirilemez.
+        //ArrayList'lerde (List) length esnektir. Siz eleman ekledikce List length'ini
+        //artirir, siz eleman sildikce List length'ini azaltir.
+
+        //List<String> list01 = new List<>(); ==> olmaz
+        //ArrayList<String> list01 = new List<>(); ==> olmaz
+        ArrayList<String> list01 = new ArrayList<>();// ==> Bu olabilir ama
+        //asagidaki daha cok kullanilir.
+        List<String> list02 = new ArrayList<String>(); //==> bu da olur ama 
+
+        String a1[]={"emre","duman"};
+        a1[0]="mavi";
+        System.out.println(a1[0]);//mavi
+        System.out.println(Arrays.toString(a1));//[mavi, duman]
+        System.out.println(Arrays.deepToString(a1));//[mavi, duman]
+
+        //add();
+        ArrayList fruitList = new ArrayList();
+        fruitList.add("mango");
+        fruitList.add("pineapple");
+        fruitList.add("coconut");
+        fruitList.add(1);
+        fruitList.add('a');
+        fruitList.add(false);
+        fruitList.add(1.0);
+        System.out.println(fruitList);//[mango, pineapple, coconut]
+        fruitList.add(1,"APPLE");//ADDED IN 1.INDEX
+       
+        //isEmpty();
+        System.out.println(fruitList.isEmpty());//false
+        
+        //set();
+        fruitList.set(0, "mangoooo");
+        System.out.println(fruitList);//[mangoooo, APPLE, pineapple, coconut, 1, a, false, 1.0]
+
+        //remove();
+        fruitList.remove("pineapple");
+        System.out.println(fruitList);//[mangoooo, APPLE, coconut, 1, a, false, 1.0]
+        
+        //clear();
+        fruitList.clear();
+        System.out.println(fruitList);//[]
+        
+        //contains();
+        System.out.println(fruitList.contains("mango"));//false
+
+        
+       
+        
+        ArrayList<Integer> integers =new ArrayList<>(1);//1 olsada artırabilirim
         integers.add(0);//0
         integers.add(1);//1
         integers.add(2,10);//the code below make 10 be third position
         integers.add(2,20);//put 20 into second position
+        //integers.add(5,20);//compile error
+        /*
+        1.element: 0 
+        2.element: 1 
+        3.element: 20 
+        4.element: 10 
+        */
       
         //sonsuza kadar data girebilirsin.
         Scanner scan= new Scanner(System.in);
@@ -1953,26 +3108,59 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
             integers.add(a);
             if(i==3){ break;}
         }
-        for(int i=0;i<integers.size();i++)
+        for(int i=0;i<integers.size();i++)//size();
         {
-            System.out.printf("%d.element: %s %n",i+1,integers.get(i));
+            System.out.printf("%d.element: %s %n",i+1,integers.get(i));//get();
+            /*
+            5.element: 1 
+            6.element: 2 
+            7.element: 3 
+            8.element: 4 
+            */
         }
+        
         for (Integer i : integers)
             System.out.println("Number = " + i);
+        
+        //Collections.sort(arraylist);
+        Collections.sort(integers);
+        System.out.println(integers);//[0, 1, 1, 2, 3, 4, 10, 20]
+        
+        //list1.addAll(list2);
+        fruitList.add("apple");//[apple]
+        fruitList.addAll(integers);
+        System.out.println("fruitList:"+fruitList);//fruitList:[apple, 0, 1, 1, 1, 1, 1, 10, 20]
+        fruitList.addAll(fruitList);
+        System.out.println("fruitList:"+fruitList);//fruitList:[apple, 0, 1, 1, 1, 1, 1, 10, 20, apple, 0, 1, 1, 1, 1, 1, 10, 20]
 
+        //addAll(1, list3);
+        List<Integer> list3 = new ArrayList<>();
+        list3.add(6);list3.add(7);
+        System.out.println(list3);//[6, 7]
+
+        List<Integer> list4 = new ArrayList<>();
+        list4.add(1);list4.add(2);list4.add(3);
+        System.out.println(list4);//[1, 2, 3]
+
+        list4.addAll(1, list3); //index 1 den itibaren ekler 
+        System.out.println(list4);//[1, 6, 7, 2, 3]
+       
 
         
+        
+        
         ArrayList<String> groups =new ArrayList<String>();//suan degersiz bir list
-        //unchangeable
         groups.add("metallica");//0
         groups.add("manga");//1
         groups.add("PUBG");//2
         //groups.add(0)="emre"; error
-       
-        System.out.printf("%d. index:%s %n ",groups.indexOf("metallica"),groups.get(0));
-        System.out.println("1. index: "+ groups.get(1));
-        System.out.println("2. index: "+ groups.get(2));
-        System.out.println("arraylist size:"+groups.size());
+        groups.set(0,"0"); 
+        
+        //indexOf(); - get();
+        System.out.printf("%d. index:%s %n ",groups.indexOf("0"),groups.get(0));//0. index:0 
+        System.out.println("1. index: "+ groups.get(1));// 1. index: manga
+        System.out.println("2. index: "+ groups.get(2));//2. index: PUBG
+        System.out.println("arraylist size:"+groups.size());//arraylist size:3
         for(int i=0;i<groups.size();i++)
         {
             System.out.printf("%d.element: %s %n",i+1,groups.get(i));
@@ -1982,26 +3170,88 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         {
             System.out.printf("%d.index: %s %n",d,i);
             d++;
+            /*
+            0.index: 0 
+            1.index: manga 
+            2.index: PUBG 
+            */
 
         }
 
-        groups.remove("metallica");//true
-        groups.remove(groups.get(0));//true
-        groups.remove(0);//true
+        boolean w1=groups.remove("metallica");//false
+        boolean w2=groups.remove(groups.get(0));//true
+        String w3=groups.remove(0);//manga
+        System.out.println("w1:"+w1 +"\nw2:"+w2 + "\nw3:"+w3);
         
+        
+        //isEmpty();
+        System.out.println(groups.isEmpty());//false PUBG kaldı
+
         int dd=0;
-        for(String i: groups)
+        for(String i: groups)//buraya girecek değer yok döngü hiç başlamaz
         {
             System.out.printf("%d.element: %s %n",dd,i);
             dd++;
-
+            //0.element: PUBG 
         }
 
+        //equals();
+        List<String> list1 = new ArrayList<>();
+        List<String> list2 = new ArrayList<>();
+
+        System.out.println(list1.equals(list2));//true
+        list1.add("A");
+        list1.add("B");
+        System.out.println(list1.equals(list2));//false
+        list2=list1;
+        System.out.println(list1==list2);//true
+        System.out.println(list2);//[A, B]
+        list1.add("C");
+        System.out.println(list2);//[A, B ,C ]
+
+
         
+        //list2.toArray() methodu list'i array'e cevirmek icin kullanilir.
+        String[] SArray =list2.toArray( new String[4] );
+        System.out.println(SArray);           //[Ljava.lang.String;@675d3402
+        System.out.println(SArray.toString());//[Ljava.lang.String;@675d3402
+        System.out.println(Arrays.toString(SArray));//[[A, B, C, null]
+        
+        
+        //2. Yontem: Olusturdugunuz array'in data type'ini Object olarak secin
+        //Object class, Java'da butun class'larin parent'idir.Yani Object class ortak atadir.
+        //Object class, Java'da parent'i olmayan tek class'dir.
+        //String, Object class'in child'i oldugundan data type olarak bazi durumlarda
+        //String yerine Object kullaniriz.
+        Object arr1[] = list2.toArray();
+        System.out.println("arr1:"+Arrays.toString(arr1));//arr1:[A, B, C]
+        
+  
+        
+        //Arrays.asList() methodu array'leri list'e cevirmek icin kullanilir.
+        //Arrays.asList() methodu parametre olarak array'in ismini kabul eder.
+        //Create an ArrayList from an array - Arrays.asList();
+        String[] stringArray = { "a", "b", "c", "d", "e" };
+        System.out.println(Arrays.asList(stringArray));//[a, b, c, d, e]
+        ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(stringArray));
+        System.out.println(arrayList);// [a, b, c, d, e]
+
+        //contains
+        boolean b = Arrays.asList(stringArray).contains("a");
+        System.out.println(b);//// true
+
+       
+        arrayList.add("Emine");
+        System.out.println(arrayList);//[a, b, c, d, e, Emine]
+        arrayList.remove("Emine");
+        System.out.println(arrayList);//[a, b, c, d, e]
+        arrayList.set(0, "elif");
+        System.out.println(arrayList);//[elif, b, c, d, e]
+    
     }
 
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc=" MATH-random ">
     public static void MATH()
     {
@@ -2049,19 +3299,34 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
         
         
         double random = Math.random() * 49 + 1;
-        int randomm = (int )(Math.random() * 50 + 1);
+        int randomm = (int )(Math.random() * 50 + 1);//DOUBLE DEGERİ INT YAP
+        //This method returns a pseudorandom double greater than
+        //or equal to 0.0 and less than 1.0.
 
-        //   RANDOM
+
+        
         // Generate random number 
         double rand = Math.random(); 
         // Output is different everytime this code is executed 
-        System.out.println("Random Number:" + rand); 
+        System.out.println("Random Number:" + rand); //0.70168273526199
 
+        //RANDOM
+        
+        Random r1, r2;//Random classı ve variableı
 
+        r1 = new Random();
+        System.out.println("Random value 1: " + r1.nextDouble());//deger girmem ve kendisi deger atar
+
+        r2 = new Random(1);
+        System.out.println("Random value 2: " + r2.nextDouble());
+        
         Random randa = new Random(); 
-        int value = randa.nextInt(50); 
-        //This will give value from 0 to 49.
+        int value = randa.nextInt(3); 
+        //This will give value from 0 1 2.
         //import java.util.Random;
+        System.out.println(randa);//java.util.Random@8bd1b6a
+        System.out.println(randa.toString());//java.util.Random@8bd1b6a
+        System.out.println(value);
 
 
     }
@@ -2069,196 +3334,1483 @@ String outpt = new DecimalFormat(pattern).format(value);//class object
   
     // </editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="String">
+    //<editor-fold defaultstate="collapsed" desc="Immutable Class - String">
         public static void Stringg()
         {
-            Scanner abc=new Scanner(System.in);
-            String a=abc.nextLine();
+            
+            //String a42; System.out.println(a42);
+            //Exception in thread "main" java.lang.RuntimeException: Uncompilable source code
+            //- variable a might not have been initialized
+
+            //IMPORTANT!!!
+            /*
+                bu 3 string de aynı kuyu gösterir.Yani 3 referans(variable) aynıkutu yazısı yazan kutuyu gösteriri.
+                bu kutunun bir tane hashcode'u vardır
+                String pool heap alanı içinde sadece string sabitleri tutan özel bir alandır. 
+                Buraya aynıkutu değeri yazıldıktan sonra bunu değiştiremeyiz.
+            */
+            String f1="aynıkutu";System.out.println(f1.hashCode());//701857958  //hashCode StringClassından geliyor 
+            String f2="aynıkutu";System.out.println(f1.hashCode());//701857958
+            String f3="aynıkutu";System.out.println(f1.hashCode());//701857958
+            System.out.println(f1==f2);//true- alanları baska olaydı false olurdu
+            System.out.println(f1.equals(f2));//true
+            
+            String f4=new String("aynıkutu");//heap memory'de yeni bir alan/nesne olusturdu
+            String f5=new String("aynıkutu");//heap memory'de yine yeni bir alan/nesne olusturdu
+           
+            System.out.println(f1==f4);//false- because variables refer to different boxes.
+            System.out.println(f4==f5);//false- because variables refer to different boxes.
+            System.out.println(f1.equals(f4));//true
+            System.out.println(f4.equals(f5));//true
+            
+             
+            Object f7=new String("aynıkutu");//heap memory'de yeni bir alan/nesne olusturdu
+            Object f8=new String("aynıkutu");//heap memory'de yine yeni bir alan/nesne olusturdu
+            
+            System.out.println("f7==f8:"+(f7==f8));//false
+            System.out.println("f7.equals(f8):"+f7.equals(f8));//true
+            
+            
+            
+            //Integer - aynı kutuyu temsil ederller primitive'ler ve hashcodeları yoktur
+            int i01=1,i02=1;
+            Integer i03=new Integer(1);
+            System.out.println(i01==i02);//true
+            System.out.println(i01==i03);//true
+            
+          
+            
+            
+            String g="123";System.out.println("g.equals(String.valueOf(123))"+g.equals(String.valueOf(123)));//true
+            int g1=123;    System.out.println("123".equals(String.valueOf(g1)));//true - String classındaki equals() methodu kullanılır
+
+            String f6=new String("aynıkutu").intern();//heap memory'de yine yeni bir alan/nesne olusturdu ve aynı zamanda String Pool'daki aynıkutu yazısını tasıyan kutuyada ulalsır.
+            System.out.println(f1==f6);//true - f6 variable'ı hem heap'te yeni olusturalan alana hem de string pooldaki kutuya referans eder.
+            System.out.println(f6.hashCode());//701857958
+            System.out.println(f1.hashCode());//701857958 f1 f2 f3 f6 hepsi aynı hashcodelu kutuyu refer eder
+            f1.concat("ilave yapmadım,yeni bir alan olusturdum");//bu kutunun referansı yok ,oyuzden ulasılamaz
+            String F2=f2.concat("ilave yapmadım,yine yeni bir alan olusturdum");//bu kutunun referansı var ,oyuzden ulasılır
+
+            
+            Basic_java nesnee2=new Basic_java("emre");//heapte yeni bir alan
+            Basic_java nesnee3=new Basic_java("emre");//heapte yine yeni bir alan
+                 
+            //WRAPPER CLASSLER VE STRING,arrays classı olsun bunlarda equals methodu override edilmiştir
+            System.out.println("nesnee2==nesnee3:"+(nesnee2==nesnee3));//false
+            System.out.println("nesnee2.equals(nesnee3)"+ nesnee2.equals(nesnee3));//false
+            //Basic_Java classında Object classındaki equals methodu override edilirse true yazabilir
+           
+
+            
+            
+            
+            
             String s1="duman";
             String s2=new String("emre");
-            System.out.println("String2:"+s2+"  String2 lenght:"+s2.length()+" "+s1.length());//4 5
+            System.out.println("String2:"+s2+"  String2 lenght:"+s2.length()+"  String1 lenght:"+s1.length());//4 5
             System.out.println("0.index of s2:"+s2.charAt(0));//stringin 0. indexi
             System.out.println("last index of s1:"+s1.charAt(s1.length()-1));//last letter
 
 
-
+            //startsWith()
             System.out.println(s2.startsWith("emr"));//TRUE
             System.out.println(s2.startsWith("e"));//TRUE
             System.out.println(s1.startsWith("D"));//FALSE
+            //endsWith()
             System.out.println(s2.endsWith("re"));//TRUE
             System.out.println(s1.endsWith("man"));//TRUE
 
-            if("emre".equals("emre")) System.out.println("equal1");
-            if("emre"=="emre") System.out.println("equal2");
-            if("duman".equals(s1)) System.out.println("equal3");//s1="duman";
-            if("duman"==s1) System.out.println("equal4");
-            if("emre".equals(a))System.out.println("equal5");
-            if(a.equals("emre")){ System.out.println("equal6");}//!!!!!!
+        //equals()
+        Scanner abc=new Scanner(System.in);
+        String a=abc.nextLine();
+        if("emre".equals("emre")) System.out.println("equal1");
+        if("emre"=="emre") System.out.println("equal2");
+        if("duman".equals(s1)) System.out.println("equal3");//s1="duman";
+        if("duman"==s1) System.out.println("equal4");
+        if("emre".equals(a))System.out.println("equal5");
+        if(a.equals("emre")){ System.out.println("equal6");}//!!!!!!
+        if("emre"==a){ System.out.println("equal7");}//FALSE/YAZMAZ REFERANSLARI FARKLIama kutuları aynı
 
-            //even if both string are same,because of their existance area are different    
-            //we need to use egual method
+        //even if both string are same,because of their existance area are different    
+        //we need to use egual method
 
-            //Convert using Integer.toString(int)
-            Scanner scan=new Scanner(System.in);
-            int s=scan.nextInt();
-            String ss=Integer.toString(s);
-            System.out.println(s);//int s
-            
-            //Convert using Integer(int).toString()
-            String sss=new Integer(s).toString();             System.out.println(sss);//int s
-            String aa=new Integer(123).toString();            System.out.println(aa);//123
+        //Convert using Integer.toString(int)
+        Scanner scan=new Scanner(System.in);
+        int s=scan.nextInt(); String Str=String.valueOf(s);
+        String ss=Integer.toString(s);
+        System.out.println(Str==ss);//false referans noktalrı farklı içleri aynı
+        System.out.println(Str.equals(ss));//true referans noktalrı farklı içleri aynı
+        System.out.println(Str.equals(s));//false 
 
-            
-            
-            //String class'ı
-            
-            String s_1=new String("bebek");//String s_1="bebek";
-            String s_2=new String("bebek");
-            String s_3="bebek";
-            String s_4="bebek";
-            
-            if(s_1==s_2)//burada referanslarını sorguluyorum
-                //oyuzden not equal yazar
-            {
-                System.out.println("equal");         
-            }
-            else{System.out.println("not equal s_1 s_2");}
-            
-            if(s_1.equals(s_2))//burada içindeki değerleri sorguluyorum
-            {System.out.println("equal s_1 s_2");}
-            else{System.out.println("not equal");}
-            
-            
-            
-            
-            if(s_3==s_4)//burada referanslarını sorguluyorum
-                //ve equal yazar
-            { System.out.println("equal s_3 and s_4");         }
-            else{System.out.println("not equal");}
-            
-            if(s_3.equals(s_4))//burada içindeki değerleri sorguluyorum
-            { System.out.println("equal");          }
-            else{System.out.println("not equal");}
-                
-            
-            
-            if(s_1==s_3)//burada referanslarını sorguluyorum
-                //oyuzden not equal yazar
-            { System.out.println("equal");          }
-            else{System.out.println("not equal");}
-            
-            if(s_1.equals(s_3))//burada içindeki değerleri sorguluyorum
-            {   System.out.println("equal");         }
-            else{System.out.println("not equal");}
-                
-                
-            String em="emre";
-            System.out.println(em);//emre   
-            String av = em.concat("duman");  System.out.println(av);//emreduman
-            em=em.concat("duman");
-            System.out.println(em);//emreduman
+        //Convert using Integer(int).toString()
+        String sss=new Integer(s).toString();      System.out.println(sss);//int s
+        String aa=new Integer(123).toString();     System.out.println(aa);//123
+        System.out.println(ss==aa);//false
 
-            
-            System.out.println("my name is ".concat("emre"));
-            
+        String q=Integer.toString(12);
+        String qq=Integer.toString(12);
+        System.out.println(q.equals(qq));//true
 
-            String y = "GeeksforGeeks"; 
-            char[] gfg = y.toCharArray(); 
-            for (int i = 0; i < gfg.length; i++) { 
-            System.out.println(gfg[i]); }
 
-            System.out.println(y.charAt (4 )  );//s
-            System.out.println(y.length()  );//13
+        //String class'ı
 
-          
+        String s_1=new String("bebek");//String s_1="bebek";
+        String s_2=new String("bebek");
+        String s_3="bebek";
+        String s_4="bebek";
 
-            String so="SachinTendulkar";  
-            System.out.println(so.substring(6));//7. indexten baslar Tendulkar  
-            System.out.println(so.substring(0,6)+ "  html");//Sachin  0dahil 6 ya kadar
-        
-        
-            char[] helloArray = { 'h', 'e', 'l', 'l', 'o', '.'};
-            String helloString = new String(helloArray);  
-            System.out.println( helloString );
-            
-            
-            String hh; //String hh=printf yapamam error
-            System.out.printf("The value of the float variable is " +
-                  "%f, while the value of the integer " +
-                  "variable is %d, and the string " +
-                  "is %s  %n", 4.4, 4, 4);
-
-            String fs;
-            fs = String.format("The value of the float variable is " +
-                   "%f, while the value of the integer " +
-                   "variable is %d, and the string " +
-                   "is %s", 5.5, 6, "köse");
-            System.out.println(fs);
-    
-        
-        
-            
-            String w1 = "Welcome to Javaaaa";
-            String w2 = w1.substring(0, 11)+ "HTML";//12 dahil deavmını yazaer
- w2 = w1.substring(10)+ "HTML";//11 dahil devamını yazar
-            System.out.println(w1);
-            System.out.println(w2);
-        
-        
-        StringBuffer  sd = new StringBuffer("Hello");
-
-		System.out.println(sd.reverse() );
-        
-        
-        String  str1 = "Free the bound periodicals.";
-      String  str2 = str1;
-
-        System.out.println("String1: " + str1);
-        System.out.println("String2: " + str2);
-        System.out.println("Same object? " + (str1 == str2));
-        
-        
-         str2 = new String(str1);
-
-        System.out.println("String1: " + str1);
-        System.out.println("String2: " + str2);
-        System.out.println("Same object? " + (str1 == str2));
-        System.out.println("Same value? " + str1.equals(str2));
-        
-        Random r1, r2;
-
-        r1 = new Random();
-        System.out.println("Random value 1: " + r1.nextDouble());
-
-        r2 = new Random(1);
-        System.out.println("Random value 2: " + r2.nextDouble());
-        
-        
-		String sk  = String.valueOf(54);
-		System.out.println(sk + 123);
-                
-                
-                
-      double d = 102939939.939;
-      boolean b = true;
-      long l = 1232874;
-      char[] arr = {'a', 'b', 'c', 'd', 'e', 'f','g' };
-
-      System.out.println("Return Value : " + String.valueOf(d) );
-      System.out.println("Return Value : " + String.valueOf(b) );
-      System.out.println("Return Value : " + String.valueOf(l) );
-      System.out.println("Return Value : " + String.valueOf(arr) );
-      
-      
+        if(s_1==s_2)//burada referanslarını sorguluyorum
+            //oyuzden not equal yazar
+        {
+            System.out.println("equal");         
         }
+        else{System.out.println("not equal s_1 s_2");}
+
+        if(s_1.equals(s_2))//burada içindeki değerleri sorguluyorum
+        {System.out.println("equal s_1 s_2");}
+        else{System.out.println("not equal");}
+
+
+
+
+        if(s_3==s_4)//burada referanslarını sorguluyorum
+            //ve equal yazar
+        { System.out.println("equal s_3 and s_4");         }
+        else{System.out.println("not equal");}
+
+        if(s_3.equals(s_4))//burada içindeki değerleri sorguluyorum
+        { System.out.println("equal");          }
+        else{System.out.println("not equal");}
+
+            
+            
+        if(s_1==s_3)//burada referanslarını sorguluyorum
+            //oyuzden not equal yazar
+        { System.out.println("equal");          }
+        else{System.out.println("not equal");}
+
+        if(s_1.equals(s_3))//burada içindeki değerleri sorguluyorum
+        {   System.out.println("equal");         }
+        else{System.out.println("not equal");}
+
+        
+        
+        char[] helloArray = { 'h', 'e', 'l', 'l', 'o', '.'};
+        String helloString = new String(helloArray);     
+        System.out.println( helloString );//hello.
+
+        String[] helloStringArray = { "h", "e", "l", "l", "o", "."};
+        //there is no such constructor in String Class
+        //String helloString2 = new String(helloStringArray);     
+        //System.out.println( helloString2 );//hello.
+        
+
+            
+        String  str1 = "Free the bound periodicals.";
+        String  str2 = str1;
+
+        System.out.println("String1: " + str1);
+        System.out.println("String2: " + str2);//String2: Free the bound periodicals.
+        System.out.println("Same object? " + (str1 == str2));//Same object? true
+        
+        
+        str2 = new String(str1);
+
+        System.out.println("String1: " + str1);
+        System.out.println("String2: " + str2);//String2: Free the bound periodicals.
+        System.out.println("Same object? " + (str1 == str2));//Same object? false
+        System.out.println("Same value? " + str1.equals(str2));//Same value? true
+        
+        
+        
+            
+        //concat();
+        String em="emre";
+        System.out.println(em);//emre   
+        String av = em.concat("duman"); //instance değişmez
+        System.out.println(av);//emreduman
+        System.out.println(em);//emre
+
+        em=em.concat("duman");
+        System.out.println(em);//emreduman
+
+        System.out.println("my name is ".concat("emre"));
+            
+
+    
+        String yy = "GeeksforGeeks";
+        //charAt
+        System.out.println(yy.charAt (4 )  );//s, 5th element
+        //length()
+        System.out.println(yy.length()  );//13
+
+        
+        //replace() methodu varolan bir characterin butun gorunumlerinin yerine baska bir character yazmaya yarar
+        //Ornek ata ==> ana
+        //replace() 1. versiyon
+        String str3 = "ata";
+        System.out.println(str3.replace('t', 'n')); //ana
+        System.out.println(str3.replace("a", "o"));//oto
+
+        System.out.println(str3.replace("x", "y"));//ata. x harfi olmadigi icin herhangi bir degisim yapmaz
+        System.out.println(str3.replace("", "/"));//==>  /a/t/a/
+        System.out.println(str3.replace("t", ""));// aa olur yani t'yi siler. Biz bu yontemi bir characteri 
+                                                  // String den silmek icin kullaniriz.
+        System.out.println(str3.replace("a", ""));//t butun a characterlerini siler.
+
+        System.out.println(str3.replace("at", "Mustaf"));//Mustafa
+        System.out.println(str3.replace("at", "y"));//ya
+	    	
+        //Soru
+        String text = "Ali okula gitti. Ali otobuse bindi. Ali eve geldi. Ali yemek yedi. Ali uyudu.";
+        System.out.println(text.replace("Ali", "Veli"));
+        
+        
+        //replaceFirst() methodu degistirmek istedigimiz characterin sadece ilk gorunumunu degistirir.
+        String str4 = "karakartal";
+        System.out.println(str4.replaceFirst("k", "K"));//Karakartal
+        System.out.println(str4.replaceFirst("a", "e"));//kerakartal
+        System.out.println(str4.replaceFirst("ka", "A"));//Arakartal
+        System.out.println(str4.replaceFirst("kar", ""));//akartal
+        System.out.println(str4.replaceFirst("kara", "A"));//Akartal
+        System.out.println(str4.replaceFirst("karakartal", "cimbombom"));//cimbombom
+	
+          
+        //substring()
+        String so="emre duman";  
+        System.out.println(so.substring(6));//7. indexten baslar uman 
+        System.out.println(so.substring(0,6)+ "  html");//emre d  html  0dahil 6 ya kadar
+
+
+        String w1 = "Welcome to Javaaaa";
+        String w2 = w1.substring(0, 11)+ "HTML";//12 dahil deavmını yazaer
+        w2 = w1.substring(10)+ "HTML";//11 dahil devamını yazar
+        System.out.println(w1);
+        System.out.println(w2);
+    
+    
+        // substring() methodu bir String'in belli bir bolumunu kesip almak icin kullanilir.
+
+        str1 = "Java calisana kolaydir";
+
+        //substring() 1. versiyon
+
+        System.out.println(str1.substring(5));//calisana kolaydir. 5 indexi gosterir
+        System.out.println(str1.substring(8));//isana kolaydir. index 8 dahildir (inclusive)
+        System.out.println(str1.substring(22));//Ekranda hic bir sey goremezsiniz
+        //System.out.println(str1.substring(23));//index 23 yok ama ben olmayan bir yerden kesmek istiyorum. 
+                                               //Bu bir hatali istekdir. Java Exception verir, yani beni uyarir
+                                               //hata yapiyorsun der.
+        System.out.println(str1.substring(0));//str1.substring(0) = str1 oldugundan substring(0) hic kullanilmaz
+
+        //substring() 2. versiyon
+        System.out.println(str1.substring(5, 13));//ilk index dahil ikinci index dahil degildir. Ilk index i ekranda gorurusunuz
+                                                  //ikinci indexi ekranda goremezsiniz. [5,13)
+                                                  //calisana
+
+        System.out.println(str1.substring(6,12));//alisan
+        System.out.println(str1.substring(6,6));//Ekranda hic bir sey goremezsiniz. substring(6,6) kullanilmaz
+        //System.out.println(str1.substring(7,6));//RunTime Error Exception verir.Bu hatayi yapmayin, her zaman ilk index kucuk 
+                                                // veya esit olmalidir.
+
+                                                       
+        //reverse() String classında böyle bir method yok
+        StringBuffer  sd = new StringBuffer("Hello");// public final class StringBuffer
+        System.out.println(sd.reverse() );//olleH
+        
+         //reverse() String classında böyle bir method yok
+        StringBuilder  sd2 = new StringBuilder("Hello");//public final class StringBuilder
+        System.out.println(sd2.reverse() );//olleH
+
+        //valueOf() 
+        double d = 102939939.939;
+        boolean b = true;
+        long l = 1232874;
+        char[] arr = {'a', 'b', 'c', 'd', 'e', 'f','g' };
+        String[] arr2 = {"a","b","c","d","e","f","g" };
+        
+
+        System.out.println("Return Value : " + String.valueOf(d) );// 1.02939939939E8
+        System.out.println("Return Value : " + String.valueOf(b) );
+        System.out.println("Return Value : " + String.valueOf(l) );
+        System.out.println("Return Value : " + String.valueOf(arr) );// abcdefg
+        System.out.println("Return Value : " + String.valueOf(arr2) );// [Ljava.lang.String;@604ed9f0
+        System.out.println("Return Value : " + String.valueOf(arr2[0]) );// a
+        
+        
+        int [] arr3 = {1,2,3,4,5};
+        Object arr32=String.valueOf(arr3);
+        String arr33=String.valueOf(arr3[0]);
+        System.out.println("Return Value : " + String.valueOf(arr32) );//[I@6a4f787b
+        System.out.println("Return Value : " + String.valueOf(arr33) );//1
+
+        
+        //indexOf()
+        System.out.println("emreduman".indexOf("du"));//4 yazar dnin indeksi 4
+        System.out.println("emreduman".indexOf("d", 2));//4 yazar 2. d yok olsa da
+        System.out.println("emredumane".indexOf("m", 2));//6 yazar 2. m
+
+        //lastIndexOf()
+        System.out.println("emreduman".lastIndexOf("e"));//3 yazar
+        System.out.println("sivrihisar".lastIndexOf("i",7));//ilk 7 indeksin içinde last i nin indeksini bulur
+        System.out.println("sivrihisar".lastIndexOf("a",7));// -1 yok çünkü/ilk 7 indeksin içinde last i nin indeksini bulur
+        
+        //equalsIgnoreCase()
+        String myString = "MERHABA DÜNYA";
+        if (myString.equalsIgnoreCase("merhaba dünya"))
+            System.out.println(myString);//MERHABA DÜNYA
+    
+        //toLowerCase()
+        System.out.println("Kucuk harfler : " + myString.toLowerCase());//merhaba dünya
+
+        //toUpperCase()
+        myString = "merhaba dunya";
+        System.out.println("Buyuk Harfler : " + myString.toUpperCase());//MERHABA DUNYA
+
+        //trim()
+        myString = "  merhaba  dunya  ";
+        System.out.println("Basta ve sondaki bosluklar silinir " + myString.trim());//"merhaba  dunya"
+
+        //split()
+        myString = "Merhaba bu benim dunyam";
+        String[] words = myString.split(" - ");
+        System.out.println("stringi string arra yapar  "+words);//[Ljava.lang.String;@604ed9f0
+        System.out.println(words[0]+" lenght "+words.length);//Merhaba bu benim dunyam lenght 1
+        System.out.println(Arrays.toString(words));//[Merhaba bu benim dunyam]
+
+        String[] words2 = myString.split("");
+        System.out.println(Arrays.toString(words2));//[M, e, r, h, a, b, a,  , b, u,  , b, e, n, i, m,  , d, u, n, y, a, m]
+
+        String[] words3 = myString.split(" ");
+        System.out.println(Arrays.toString(words3));//[Merhaba, bu, benim, dunyam]
+
+
+        // Verilen bir cumledeki bosluklar haric character sayisini bulunuz.
+		
+        String str = "Verilen bir cumledeki bosluklar haric character sayisini bulunuz.";
+		
+        str = str.replace(" ", ""); // str = "Verilenbircumledekibosluklarhariccharactersayisinibulunuz."
+        String harf[] = str.split("");
+        System.out.println(harf.length);
+	    
+	//Another Way
+        String strr3 = "Verilen bir cumledeki bosluklar haric character sayisini bulunuz.";
+        String kelime[] = strr3.split(" ");
+        int boslukSayisi = kelime.length - 1;
+        System.out.println(boslukSayisi);
+        String character[] = str1.split("");
+        System.out.println(character.length - boslukSayisi);
+        
+        
+
+        //isEmpty();
+        System.out.println(myString.isEmpty());//false çünkü dolu
+        System.out.println(" ".isEmpty());//false çünkü dolu
+        System.out.println("".isEmpty());//true çünkü dolu
+
+
+    
+        //contains()
+        System.out.println("karakartal".contains("g"));//false
+        System.out.println("karakartal".contains("a"));//true
+        System.out.println("karakartal".contains("kar"));//true
+        //System.out.println("karakartal".contains('a'));//error char kabul etmez
+    
+    
+    
+        // String i byte array yapar        
+        myString = "Merhaba dünya";         
+        byte[] strByte = myString.getBytes();//stores bytes into array         
+        System.out.println(Arrays.toString(strByte));//[77, 101, 114, 104, 97, 98, 97, 32, 100, -61, -68, 110, 121, 97]       
+        System.out.println("index 0:"+strByte[0]+" byteArrayLength ");//index 0:77 byteArrayLength - 77 M
+        System.out.println(new String(strByte));//Stringi referansı baska olan bir string atamak
+   
+        //toCharArray();
+         String y = "GeeksforGeeks"; 
+         char[] gfg = y.toCharArray(); 
+         for (int i = 0; i < gfg.length; i++) { 
+         System.out.print(gfg[i]+" "); }//G e e k s f o r G e e k s  
+
+         //toCharArray();
+         String y2 = "0123456789"; 
+         Integer zx=new Integer(y2); System.out.println(zx);//123456789
+         int[] yu=new int []{zx}; System.out.println(yu);/*[I@4cf777e8*/   System.out.println(yu[0]);//123456789
+         int[] yu2=new int []{Integer.parseInt(y2)}; System.out.println(yu2);/*[I@2f686d1f*/   System.out.println(yu[0]);//123456789
+            System.out.println(yu2.length);//1
+         
+    
+
+    //compareTo()
+    String st1="alisa";
+    int i=0;
+    i=st1.compareTo("behra");
+    System.out.println("\ni:"+i+"  st1:"+st1);//i:-1 because i "a"lisa "b"ehradan erken gelir
+    
+    //getChars(stpoint,endpoint,destSrc,stPointsAtDest)
+    String st2="anadolu";
+    char karDiz[]=new char[7];
+    st2.getChars(3,7,karDiz,0);    
+    //index3ten 6dahile kadar karDiz in içine 0.indexten itibaren yerleştir
+            System.out.println("Arrays.toString(karDiz)"+Arrays.toString(karDiz));
+
+    System.out.println("Yeni dizi: ");
+    for(i=0; i<karDiz.length; i++)
+    System.out.println(karDiz[i]);
+    
+    
+    }
+        
+        
+        
         
 
     //</editor-fold>
+        
+    //<editor-fold defaultstate="collapsed" desc=" StringBuffer & StringBuilder vs String">
+        
+        static public void StringBuilder()
+        {
+            //STRİNGTEKİ METHODLAR STRINGTE KALICI DEĞİŞİKLİĞE NEDEN OLMAZ
+           
+            String name="Emre"; 
+            System.out.println(name.substring(2));//starts from index2 re/ suan bu re heap bellekte yaratıldı /re
+            //"re" objesi olustu fakat terkedilmis durumda (abadoned)
+            
+            name.concat(" Duman");
+            //concat(" Duman")       - " Duman" objesi olustu referansı yok unassigned abandoned
+            //name.concat(" Duman"); - "Emre Duman" objesi oluştu ama abandoned unassigned to any variable
+            String x=name.concat(" Duman"); System.out.println(x);//assigned Emre Duman 
+            System.out.println(name);//Emre değişim olmadı String immutable
+           
+            name=name.substring(2);//arrtık name=re;
+            System.out.println(name);//re
+            String newName=name.substring(2);//starts from index2 re/ suan bu re heap bellekte yaratıldı / re
+            System.out.println(newName);//re
+            
+            //1
+            StringBuilder str=new StringBuilder();//suan bos string haznesi olusturdum
+            System.out.println(str.append("emre"));//atama yaptım yazdırdım / emre
+            
+            //2
+            StringBuilder str1=new StringBuilder("Duman");//suan bos string haznesi olusturdum ve deger atadım
+            System.out.println(str1);//Duman
+            
+            //3
+            StringBuilder str2=new StringBuilder(5);//capacity
+            str2.append("12345");
+            str2.append("6789");//string builder mutable dır capacity 5ten 9a cıktı
+            System.out.println(str2);//123456789 yazdırıdm
+            
+
+            
+            StringBuilder str3=new StringBuilder("animals");
+            //str3=(StringBuilder)str3.substring(3);// str3 StringBuilder type dır str3.substring() string typedır.
+            String newString=str3.substring(0, 5);// string type =string type
+            
+            System.out.println(str3.indexOf("s"));//s nin index inin yazar - 6 
+            System.out.println(str3.charAt(6));//6. indexteki char ı yazar - s
+            System.out.println(str3.length());//7
+            
+            //delete()-deleteCharAt()-insert() methodu StringBuilder a hastır.oyüzden hemen kalıcı değiişiiklik olur
+            System.out.println(str3.insert(0, 2));//0 indexine 1 yazar  1animals
+            System.out.println(str3.delete(0, 1));//0 dan 1 e kadar sil 1 dahil değil - animals
+            System.out.println(str3.deleteCharAt(6));//animal
+            
+            StringBuilder str4=new StringBuilder();
+            System.out.println(str4.append("aaaaa").insert(1, "bb").insert(4,"ccc"));//abbacccaaa- chain usulu denir- ethodlar pespese yazılır
+           
+          
+            //
+            String str5="0";  int a=0; String s=Integer.toString(a);
+            StringBuilder str6=new StringBuilder("0");
+            /*
+            if(str5==str6)//compileTime error DATA TİPİ FARKLI OLDUĞU İÇİN COMPLIE EDEMZ
+                System.out.println("1");*/
+            if(str5.equals(Integer.toString(a)))//true
+                System.out.println("2");
+            
+            if(str5.equals(String.valueOf(str6)))//true - //StringBuilder data type ın yazılışını aldım ve Stringin içine koydum 
+                System.out.println("2"); 
+            
+            if(str5.equals(str6.toString()))//true - //StringBuilder data type ın yazılışını aldım ve Stringin içine koydum 
+                System.out.println("2");
+            
+        }
+        
+        
+        
+        static public void StringBuffer()//StringBuilder den farkı methodları synchronized dır
+        {
+            StringBuffer sb = new StringBuffer("abc");
+                //public synchronized StringBuffer append(String str) {...}
+                sb.append("def").append(sb);//sb = abcdefabcdef
+                System.out.println("sb = " + sb); //cikti sb = abcdefabcdef olacaktir
+            
+            
+            StringBuffer sb2 = new StringBuffer("0123456789");
+                //public synchronized StringBuffer delete(int start, int end) { ... }	
+                sb2.delete(4, 6);
+		// index 0 dan baslayacaktir!
+		// baslangic indexi dahil,(4)
+		// bitis indexi dahil degildir (6)	
+		System.out.println(sb2);//01236789
+            
+            StringBuilder sb3 = new StringBuilder("0123456789");
+                //public StringBuffer insert(int offset, int i) { ... }
+                sb3.insert(4, "----"); // 4.indexten sonra ekleme yap!(insert)
+                System.out.println(sb3);//0123----456789
+
+            StringBuffer sb4 = new StringBuffer("levent erguder");
+                //public synchronized StringBuffer reverse() {...}
+                sb4.reverse();
+		System.out.println(sb4);//redugre tnevel
+                
+                
+            StringBuffer sb5 = new StringBuffer("test string");
+                //public synchronized String toString() {.. }
+                //toString metodu ile StringBuffer ve StringBuffer objesinden String obje olustururuz.
+		System.out.println(sb5.toString());//test string
+                
+                
+                
+                //StrinBuffer VS StringBuilder
+                
+            long startTime = System.currentTimeMillis();  
+            
+            StringBuffer sb01 = new StringBuffer("Java");  
+            for (int i=0; i<10000000; i++){  
+                sb.append("Tpoint");  
+            }  
+            System.out.println("Time taken by StringBuffer: " + (System.currentTimeMillis() - startTime) + "ms");  
+           
+            startTime = System.currentTimeMillis();  
+            StringBuilder sb02 = new StringBuilder("Java");  
+            for (int i=0; i<10000000; i++){  
+                sb2.append("Tpoint");  
+            }  
+            System.out.println("Time taken by StringBuilder: " + (System.currentTimeMillis() - startTime) + "ms");  
+       
+            /*
+                Performance Test of StringBuffer and StringBuilder
+                Time taken by StringBuffer: 305ms
+                Time taken by StringBuilder: 278ms  fast because
+            
+            
+                StringBuffer is synchronized, StringBuilder is not.
+                StringBuilder is faster than StringBuffer because it's not synchronized .
+            
+            
+                StringBuilder is non-synchronized i.e. not thread safe.
+                It means two threads can call the methods of StringBuilder simultaneously. 
+                StringBuffer is less efficient than StringBuilder. 
+                StringBuilder is more efficient than StringBuffer.
+               
+
+                StringBuffer                                             StringBuilder
+                StringBuffer is synchronized i.e. thread safe.           StringBuilder is non-synchronized i.e. not thread safe.
+                It means two threads can't call the methods of           It means two threads can call the methods of StringBuilder 
+                StringBuffer simultaneously.                             simultaneously.
+            */
+        }  
+
+        
+    // </editor-fold> 
+        
+    //<editor-fold defaultstate="collapsed" desc=" Algorithm Questions 1-5">
+        
+       public static void AlgorithmQuestions()
+       {
+            //1 
+            System.out.println("Decimal of 10 is: ");   decimalToBinary(10);  //1010
+            System.out.println("Decimal of 21 is: ");  decimalToBinary(21); //10101
+            
+            //2
+            createMatrix(5,5);
+            
+            //3
+            Scanner tara = new Scanner(System.in);
+            System.out.println("Satır sayısını giriniz");
+            int satirSayisi = tara.nextInt();
+            createCrossShape(satirSayisi);
+            
+            //4
+            cardGame();
+            
+            //5
+            ebobEkok(4,5);
+            
+
+       }
+
+       
+       //Decimal sayıları binary formatına çeviren java programını yazınız.
+       //Program 30 sayısı için 1 1 1 1 0 çıktısını üretmeli, String kullanabilirsiniz.
+       public static void decimalToBinary(int decimal)
+       {    
+            int binary[] = new int[40];    
+            int index = 0;    
+            while(decimal > 0)
+            {    
+                binary[index++] = decimal%2;    
+                decimal = decimal/2;    
+            }    
+
+            for(int i = index-1;i >= 0;i--) {    
+                System.out.print(binary[i]);    
+            }   
+
+             System.out.println();//new line  
+       }    
+     
+       
+       //: 5*5 bir matris olusturun ve bu matrisin elemanları 0 - 9 arasında rastgele sayılar olsun.
+       // Bu matrisi ekrana    yazdıran ve çapraz elemanların toplamını gösteren programı yazınız.
+       public static void createMatrix(int a, int b)
+       {
+            int[][] matrix = new int[a][b];
+            int genelToplam = 0;
+
+            for(int i=0; i<a; i++)
+            {
+                for(int j=0; j<b; j++)
+                {
+                    matrix[i][j] = (int) (Math.random() * 10);
+                    System.out.print(matrix[i][j]+ "  ");
+                }
+                genelToplam= genelToplam + matrix[i][i];
+                System.out.println();
+            }
+
+            System.out.println("Çapraz elemanların toplamı :"+genelToplam);
+       }
+       
+       
+       /*
+        * X     X
+        *  X   X
+        *    X
+        *  X   X
+        * X     X
+        *
+       */
+       public static void createCrossShape(int line)
+       {
+            for(int i=0; i<line; i++)
+            {
+                for(int j=0; j<line; j++)
+                {
+                    if(i==j || j==(line-i-1)){
+                        System.out.print("x");
+                    }
+                    else{
+                        System.out.print(" ");
+                    }
+                }
+                System.out.println(" ");
+            }
+       }
+       
+       
+       //Iskambil destesini diziler ile olusturun. Sonrasında bu destedeki
+       //elemanları karıştırın ve de ilk kullanıcıya hangi 4 kartın geldiğini
+       //ekrana yazdırın.
+       
+       public static void cardGame()
+       {
+            String kartTurleri[] = {"Kupa","Maça","Karo","Sinek"};
+            String kartNumaralari[] = {"As" , "2", "3", "4", "5", "6", "7", "8","9" ,"10", "J","Q","K"};
+            int deste[]=new int[52];
+            desteyiOlustur(deste);
+            desteyiKaristir(deste);
+            desteyiGoster(deste, kartTurleri, kartNumaralari);
+       }
+       
+       private static void desteyiOlustur(int[] deste) 
+       {
+            for(int i=0; i<deste.length ; i++)
+            {
+               deste[i] = i ;
+            }
+            System.out.println(Arrays.toString(deste));
+       }
+       private static void desteyiKaristir(int[] deste)
+       {
+            for(int i=0; i<deste.length; i++)
+            {
+                int rastgeleIndex = (int)(Math.random() * deste.length);
+                //swap işlemi var
+                int gecici = deste[i];
+                deste[i] = deste[rastgeleIndex];
+                deste[rastgeleIndex] = gecici;
+            }
+            System.out.println(Arrays.toString(deste));
+
+        }
+        private static void desteyiGoster(int[] deste, String[] kartTurleri, String[] kartNumaralari) 
+        {
+            for(int i=0; i<4 ; i++)
+            {
+                String kartTuru = kartTurleri[deste[i] / 13];
+                String kartNumarasi = kartNumaralari[deste[i] % 13];
+                System.out.println(kartTuru + " " + kartNumarasi);
+            }
+        }
+ 
+        
+        //Verilen iki sayının en küçük ortak katını bulan uygulamayı yazınız.
+        //Ekok(s1, s2)* ebob(s1,s2) = (s1*s2); buna uygun olacak şekilde bulunuz
+
+        public static void ebobEkok(int birinciSayi , int ikinciSayi) 
+        {
+            //int ekok = klasikEkokBul(birinciSayi, ikinciSayi);
+            //System.out.println(birinciSayi+" ile "+ikinciSayi+" ekoku :"+ekok);
+            //int ebob = ebobBul(15, 45);
+            //System.out.println("ebob : "+ebob);
+            int ekok = ekokBul(birinciSayi, ikinciSayi);
+            System.out.println("ekok : "+ekok);
+            int ebob = ebobBul(birinciSayi, ikinciSayi);
+            System.out.println("ebob:"+ebob);
+        }
+       
+        private static int ekokBul(int birinciSayi, int ikinciSayi)
+        {
+            //ebob * ekok = s1 * s2 ;
+            int ekok = (birinciSayi * ikinciSayi) / ebobBul(birinciSayi,ikinciSayi);
+            return ekok;
+        }
+        
+    private static int ebobBul(int birinciSayi, int ikinciSayi)
+    {
+        int ebob = 1;
+        int kontrol = 2;
+        while(kontrol <= birinciSayi && kontrol <= ikinciSayi)
+        {
+            if(birinciSayi % kontrol == 0 && ikinciSayi % kontrol ==0)
+            {
+                ebob = kontrol;
+            }
+            kontrol++;
+        }
+        
+        if(ebob==1){
+              System.out.println(birinciSayi +" ve " + ikinciSayi+ " aralarında asaldır");
+        }
+        else{
+            System.out.println(birinciSayi +" ve " + ikinciSayi+ " sayılarının en büyük ortak böleni :"+ebob);
+        }
+        return ebob;
+    }
     
     
+    private static int klasikEkokBul(int birinciSayi, int ikinciSayi)
+    {
+        int buyuk = Math.max(birinciSayi,ikinciSayi);
+        int ekok =0;
+        for(int i = buyuk; i<= birinciSayi*ikinciSayi; i++)
+        {
+            if(i % birinciSayi == 0 && i% ikinciSayi ==0)
+            {
+                ekok = i;
+                break;
+            }
+        }
+        return ekok;
+    }
+    // </editor-fold> 
+
+    //<editor-fold defaultstate="collapsed" desc=" Date/DateFormat/Calendar classes ">
+        
+    public static void date()
+    {
+        //LocalDate Classı
+        //public final class LocalDate implements Temporal, TemporalAdjuster, ChronoLocalDate, Serializable 
+        // Bugunun tarihini ekrana yazdiralim
+        System.out.println(LocalDate.now());//2020-05-27
+
+        // Bugunun zamanini saat, dakika, saniye ve salise olarak ekrana yazdiralim
+        System.out.println(LocalTime.now());//12:16:58.333841
+
+        // Bugunun tarihini ve zamanini ekrana yazdiralim
+        System.out.println(LocalDateTime.now());//2020-05-27T12:16:58.334844100 Buradaki "T" tarih ile zamani ayirmak icin konuluyor.
+        
+                  
+        
+        
+        //LocalDate
+        LocalDate date = LocalDate.now();
+        System.out.println(date);//2020-05-20
+        System.out.println(date.plusDays(3));//2020-05-23
+        System.out.println(date.plusDays(13));//2020-06-02 ==> Gun fazla olunca ay veya yil da degisir
+        System.out.println(date.plusWeeks(2));//2020-06-16
+        System.out.println(date.plusMonths(2));//2020-08-16
+        System.out.println(date.plusYears(2));//2022-08-20
+
+        System.out.println(date.minusDays(3));//2020-05-17
+        System.out.println(date.minusWeeks(1));//2020-05-13
+        System.out.println(date.minusMonths(2));//2020-03-20
+        System.out.println(date.minusYears(4));//2016-05-20
+        //Bu methodlar  kalıcı değişiklik yapmaz
+                 
+        
+        //DateTimeFormatter
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MMM-yyyy"); 
+        System.out.println(dtf.format(date));//20-May-2020	
+
+        DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        System.out.println(dtf1.format(date));//20-05-2020
+
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy/M/dd");
+        System.out.println(dtf2.format(date));//2020/5/20
+        
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("Y/M/dd");
+        System.out.println(dtf3.format(date));//2020/5/20
+        
+        DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("YYYY/M/DDD");
+        System.out.println(dtf4.format(date));//2020/8/238
+        
+        
+        
+        
+        //LocalTime
+        // Time Manipulation (Zamani degistirecegiz)		
+        LocalTime time = LocalTime.now();
+        System.out.println(time);//09:35:09.741468500
+
+        //plus ve minus methodlarini saat, dakika ve saniye icin kullaniniz
+        System.out.println(time.plusSeconds(35));
+        System.out.println(time.plusMinutes(4));
+        System.out.println(time.plusHours(2));
+
+        System.out.println(time.minusSeconds(11));
+        System.out.println(time.minusMinutes(3));
+        System.out.println(time.minusHours(1));
+        //Bu methodlar  kalıcı değişiklik yapmaz
+
+        
+        DateTimeFormatter dtf5 = DateTimeFormatter.ofPattern("hh:mm");//HH kullanirsaniz 24 luk dilimi kullanir
+        System.out.println(dtf5.format(time.plusHours(3)));//03:37
+        
+        DateTimeFormatter dtf6 = DateTimeFormatter.ofPattern("HH:mm");//HH kullanirsaniz 24 luk dilimi kullanir
+        System.out.println(dtf6.format(time.plusHours(3)));//15:37
+        
+        DateTimeFormatter dtf7 = DateTimeFormatter.ofPattern("HH:mm:ss");//HH kullanirsaniz 24 luk dilimi kullanir
+        System.out.println(dtf7.format(time.plusHours(3)));//15:37:28
+
+        
+        //Baska ulkenin local zamanini almak 	
+        System.out.println(time.now(ZoneId.of("Asia/Istanbul")));//13:37:01.476955
+                                                        
+                     
+        //Date Class
+        Date date2 = new Date();
+        System.out.println(date2.toString());//Fri May 01 15:39:53 EDT 2020
+        System.out.println("Timestamp : " + date2.getTime());//Timestamp : 1588362039222
+
+        
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        System.out.println(df.format(date2));//2020/05/01
+        
+        Calendar takvim = new GregorianCalendar(1984, 01, 01);//Wed Feb 01 00:00:00 EST 1984
+        Date tarih = takvim.getTime();
+        System.out.println(tarih.toString());
+    }
+    // </editor-fold> 
+
+    //<editor-fold defaultstate="collapsed" desc=" icice methodlar ekok-ebob">
+        
+        static public void icice_Methods()
+        {
+            int n1=10,n2=15;
+            int ekok = ekokBul(n1,n2);
+            System.out.println("ekok:"+ekok);	        
+        }
+
+	/*
+	 * return ekok
+	 */
+	private static int ekokBul01(int num1, int num2) 
+	{
+		// TODO Auto-generated method stub
+		
+		int ekok =(num1 * num2) / ebobBul(num1,num2);
+		return ekok;
+	}
+
+	private static int ebobBul02(int num1, int num2)	
+	{
+		// TODO Auto-generated method stub
+		int ebob=1;
+		int control=2;
+		while(control <= num1 && control <=num2)
+		{
+			if(num1%control==0 && num2%control==0)
+			{
+				ebob=control;					
+			}
+			control++;
+		}
+		if (ebob==1)
+			System.out.println("One of them or both numbers are prime ");
+		else
+			System.out.println("Ebob is:"+ebob);
+			
+		return ebob;
+	}
+        
+        
+    // </editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc=" icice methodlar2 ">
+        
+        public static void icice_Methods2()
+        {
+            /*
+            The int array is an array of integers where as the char array of printable characters. 
+            The printwriter has the capability to print character arrays as this is how it prints 
+            string anyway. The printwriter will therefore print them like a string, without 
+            calling the toString() method to convert it to a string. 
+            Converting an int array to a string returns a hash code,
+            explaining why you get that output.
+            */
+            int [] a ={1,2,3}; System.out.println(a);//[I@2752f6e2
+            char [] a2 ={69,70,71}; System.out.println(a2);//EFG
+            Scanner scan=new Scanner(System.in);
+            System.out.print("Please enter the amount of students:");
+            int studentNum=scan.nextInt();
+            System.out.print("Please enter the amount of questions:");
+            int questionNum=scan.nextInt();
+
+            char [][] allAnswers=new char [studentNum][questionNum];//student answers	
+            char [] answerKey= new char[questionNum];//answerkey
+
+            createAnswerKey(answerKey);//randomAnswers();
+            showAnswerKey(answerKey);
+            
+            System.out.println(answerKey.toString());//[C@458ad742
+            System.out.println(answerKey);//CBA
+            System.out.println(Arrays.toString(answerKey));//[C, B, A]
+            
+            put(allAnswers);	//randomAnswers();
+            showAllAnswers(allAnswers);//of students
+            System.out.println(Arrays.deepToString(allAnswers));
+            
+            compareStudent(answerKey,allAnswers);
+        }
+        
+        public static char randomAnswers()//create random answers
+	{
+            int randomNum=(int)(65+(Math.random()*5));//65-66-67-68-69- A B C D E 
+            char randomAnswer=(char) randomNum;
+            return randomAnswer;	
+	}
+
+	private static void createAnswerKey(char [] array)//put random answers in a array
+	{
+            for(int i=0 ; i < array.length ; i++)
+            {
+                array[i]=randomAnswers();
+            }
+	}
+
+	private static void showAnswerKey(char[] answerKey) 
+	{
+            System.out.println("Answer Key:");
+            int count=1;
+            for(char answer: answerKey)
+            {
+                System.out.printf("%d.Qestion's Answer is: %c%n",count,answer);
+                count++;
+            }
+            System.out.println();
+	}
+
+	
+	/*
+	 * puts random answers of students
+	 */
+	private static void put(char[][] allAnswers)
+	{
+            for(int line=0 ; line<allAnswers.length ; line++)
+            {
+                for(int coloum=0 ; coloum<allAnswers[line].length ; coloum++)
+                {
+                    allAnswers[line][coloum]=randomAnswers();
+                }
+
+            }
+	}
+
+	
+	private static void showAllAnswers(char[][] allAnswers) 
+	{
+            for(int line=0 ; line<allAnswers.length ; line++)
+            {
+                for(int coloum=0 ; coloum<allAnswers[line].length ; coloum++)
+                {
+                    System.out.printf("%d.Student's of %d.answer::%c%n",line+1,coloum+1,allAnswers[line][coloum]);
+                }
+                System.out.println();
+            }
+	}
+
+
+	private static void compareStudent(char[] answerKey, char[][] allAnswers)
+	{
+            ArrayList <Integer > succesfulStudent=new ArrayList<>();
+            
+            for(int line=0 ; line<allAnswers.length ; line++)
+            {
+                int correctAnswer=0;
+                for(int coloum=0 ; coloum<allAnswers[line].length ; coloum++)
+                {
+                    if(allAnswers[line][coloum] == answerKey[coloum])
+                    {
+                        correctAnswer++;
+                        if(correctAnswer==answerKey.length)
+                        {
+                            succesfulStudent.add(line);
+                        }
+                    }
+                }
+                System.out.printf("The Number of %d.Student's correct answers:%d%n",line+1,correctAnswer);
+            }      
+            
+            if(succesfulStudent.size()>0)
+            {
+                System.out.println("****Successful Students****");
+                for(int i: succesfulStudent)
+                    System.out.printf("%d. Student is succesful!%n",i);
+            }
+            else
+                System.out.println("nobody is succeeded");
+	}
+
+        void allCorrect(int allCorrectAnswer , String succesfulStudent [])
+        {
+            
+        }
+
+       
+    // </editor-fold>   
+        
+    //<editor-fold defaultstate="collapsed" desc=" icice methodlar3 ">
+
+   static public void icice_Methods3()
+   {
+        System.out.println("Please Write a Sentence:");//pyhtondaki print() ile aynı
+        Scanner Scan =new Scanner(System.in);
+        String input=Scan.nextLine();//cümle yaz ve cümleyi String input'a ata
+        
+        byte[] adSoyadByte = input.getBytes();//stores bytes into array  
+        System.out.println("byte[] adSoyadByte : "+Arrays.toString(adSoyadByte) );
+       
+        String sortedNameSurname=new String(sortByte(adSoyadByte));
+        System.out.println(sortedNameSurname);
+        FirstLetters(input);//String'i methodun içine koy
+        reverseNameSurname(input);
+   }
+       
+    public static void FirstLetters(String s)//bu method String bir değer return eder, s parametresi girdiğimiz cümleyi temsil eder
+    {
+        String fletters="";//bosluktan sonraki harfleri büyültüp buraya eklicem
+
+        if(String.valueOf(s.charAt(0)) != " ")//Eğer ilk harf boşluk değilse 
+        {        
+            fletters=fletters.concat(String.valueOf(s.charAt(0)).toUpperCase());//madem String'in(cümlenin) ilk char'ı bosluk değil,cümlenin ilk char'ını fletters'a ekle
+            System.out.println(tara(s,fletters));//girdiğin cümleyi tarayıp, bosluktan sonraki harfleri büyültüp  String fletters'a ekledi,
+            //artık return edilmiş bu string değerinin print edelim
+        }
+
+
+        if(String.valueOf(s.charAt(0)).equals(" "))//Eğer cümlenin ilk harfi boşluk ile baslıyorsa
+        {
+            System.out.println(tara(s,fletters));//girdiğin cümleyi tarayıp, bosluktan sonraki harfleri büyültüp  String fletters'a ekledi,
+                                                //artık return edilmiş bu string değerinin print edelim
+        }
+    }
+
+    public static String tara(String s,String firstletters)//hem girdiğimiz cümleyi hem method içine yazdığım boş stringi parametere olarak aldı
+    {
+        for(int i=0 ; i<s.length()-1 ; i++)////cümleyi bastan  sona harf harf  gez
+        {
+            if(s.charAt(i)==' ')//eğer cümle içinde  bir bosluk ile karsılasırsa
+            {                        
+                if(s.endsWith(" "))//boslukla karsılasırsa ve eğer bu bosluk  cümlenin son char'ı ise hiç bir şey yapma
+                {
+
+                }
+                else //eğer bu bosluk cümlenin son karakteri değilse
+                {
+                    firstletters=firstletters.concat(String.valueOf(s.charAt(i+1)).toUpperCase());//bosluktan sonraki char'ı String'e dönüştür, büyült, fletters String'ine ekle
+                }
+            }
+        }//döngü bittik,yani cümleyi bastan sona gezdik
+        return firstletters;//bas harfleri biriktiren stringi üstteki methoda return eder
+    }
     
+    static byte []sortByte(byte arr[]) 
+    { 
+        int n = arr.length;   
+        // One by one move boundary of unsorted subarray 
+        for (int i = 0; i < n-1; i++) 
+        { 
+            // Find the minimum element in unsorted array 
+            int min_idx = i; 
+            for (int j = i+1; j < n; j++) 
+                if (arr[j] < arr[min_idx]) 
+                    min_idx = j; 
+  
+            // Swap the found minimum element with the first 
+            // element 
+            byte temp = arr[min_idx]; 
+            arr[min_idx] = arr[i]; 
+            arr[i] = temp; 
+            
+        } 
+        return arr;
+    } 
+  
+ 
+    static void reverseNameSurname(String input)
+    {
+        
+        char [] strAsCharArray = input.toCharArray(); 
+        System.out.println(strAsCharArray );//emre duman
+        System.out.println(strAsCharArray + " - "+strAsCharArray.length);//[C@2ef5e5e3 - 10
+        System.out.println(Arrays.toString(strAsCharArray) + " - "+strAsCharArray.length);//
+        //[e, m, r, e,  , d, u, m, a, n] - 10
+        
+        byte [] strAsByteArray = input.getBytes(); 
+        byte [] result = new byte [strAsByteArray.length]; //strAsCharArray.length da yazabiliridm
+  
+        // Store result in reverse order into the 
+        // result byte[] 
+        for (int i = 0; i<strAsByteArray.length; i++) 
+            result[i]=strAsByteArray[strAsByteArray.length-i-1]; 
+  
+        System.out.println(new String(result)); 
+    }
     
+
+        // </editor-fold>    
+
+    //<editor-fold defaultstate="collapsed" desc=" pass by value - pass by reference ">
+    
+    //Bir method'a variable yollandiginda Java o variable'in
+    //kopyasini olusturur ve method'a kopyayi yollar bu yuzden variable'in
+    //orjinal degeri method calistiktan sonra da ayni kalir.
+    //Buna Pass By Value denir.
+
+    //Pass by Refernece'da ise reference'in kopyasi olusturulur ve methoda yollanir
+    //fakat reference'in kopyasi da kendisi gibi ayni object'i gosterdigi icin orjinal
+    //deger degisir.
+    
+    void practiceOfIncrement()
+    {
+        int a=10;
+        a=a++;//firstly assigns, then does post-increment
+        System.out.println(a);//10
+        
+        int a1=10;
+        a1=(a1++);//firstly assigns, then does post-increment
+        System.out.println(a1);//10
+        
+        int a2=10;
+        a2=++a2;//firstly does pre-increment, then assigns 
+        System.out.println(a2);//11
+        
+        int a3=10;
+        a3++;//does post-increment  a3 artık kutu 11 i refer ediyor
+        /*11*/++a3;//12 - does pre-increment a3 artık kutu 12 i refer ediyor
+        System.out.println(a3);//12
+    }
+    
+    static int yyy=10;
+    int xxx=20;
+    
+    int passByValue1(int a){ return ++a;}//sayı +1 arttı  ve içeri girdi
+    int passByValue2(int a){ return a++;}//sayı girdi ve sonra +1 oldu
+    
+    //passByValue yani primitive data type'lar method içinden değiserek cıkmazlar
+    
+    void passByValue_Reference()
+    {
+        practiceOfIncrement();
+        System.out.println(passByValue1(yyy)+"\n"+//11
+                yyy//10
+        );
+
+        System.out.println(passByValue1(++yyy));//10 11 oldu ve parametre olarak atandı
+        System.out.println(passByValue2(yyy));//11 çünkü yyy static
+        System.out.println(yyy);//11
+        System.out.println(xxx);
+       
+    }
+    
+
+    
+        
+    static int x01=10;
+    static public void passByValue(int x)
+    {
+        x++;
+        System.out.println("x:"+x);//11
+        System.out.println("x01:"+x01);//10
+    }
+
+
+    int [] dizi=new int[10];
+    public void passByReference(int[] d )
+    {
+        d[1]=1;System.out.println(Arrays.toString(d));//[0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+    }
+    
+    public void passByValueAndReference()
+    {
+        passByValue(x01);
+        passByReference(dizi);//[0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+        System.out.println(Arrays.toString(dizi));//[0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+    }
+    
+        // </editor-fold>   
+
+   
+
+}//end of class
+
+
+//<editor-fold defaultstate="collapsed" desc=" settingPassword ">
+        
+        class setPassword
+        {
+            private static String symbol="!'^#+$%&/{([)]=}-_?*|";
+            private static String password;
+            private static int symbolNum;
+            private static int digitNum;
+            private static int upperCase;
+            private static int lowerCase;
+            private static boolean lenght;
+            
+            public static void putPassword()
+            {
+                System.out.println("PLEASE ENTER A PASSWORD");
+                Scanner scan=new Scanner(System.in);
+                password = scan.next();
+
+                if(password.length()>=10)//at least 10 digits	
+                {
+                    lenght=true;
+                    for(int i=0; i<password.length() ; i++)
+                    {				
+                        if(symbol.contains(password.substring(i, i+1)))
+                            symbolNum++;
+
+                        if(Character.isDigit(password.charAt(i)))//at least 1 digit						
+                            digitNum++;
+
+                        if(Character.isUpperCase(password.charAt(i)))//at least 1 uppercase
+                            upperCase++;
+
+                        if(Character.isLowerCase(password.charAt(i)))//at least 1 lowercase
+                            lowerCase++;  	            
+                    } 
+                }
+
+		if(lowerCase>0 && upperCase>0 && digitNum>0 && symbolNum>0 && lenght)
+                    System.out.println("The password is valid");
+		else
+                    System.out.println("The password is not valid");
+            }    
+        }     
+    // </editor-fold> 
+
+//<editor-fold defaultstate="collapsed" desc="ARRAY-Class">
+    class ARRAYshopping
+    {
+        String shoppingList[];
+        String shoppingList2[];
+        int itemNUM=0,limit;
+        
+        public ARRAYshopping(int capacity)
+        {
+            shoppingList=new String[capacity];
+            this.limit=capacity;     
+        }
+        
+        
+        public void AddItems(String added)
+        {
+            if(itemNUM < limit)
+            {
+                shoppingList[itemNUM]=added;
+                itemNUM++;
+            }
+            else
+            {
+              
+            }
+        }
+          //1 2 3 4 5 - line2
+        public void addItems_index(String added,int line)
+        {
+            if(line-1 <= itemNUM && line-1 >= 0 && itemNUM<=limit)
+            {
+                limit++;
+                shoppingList=new String[limit];//listenin size ı 1 arttı
+
+                
+
+                for(int i=itemNUM-1; i>=line-1; i--)
+                {
+                    shoppingList[i+1]=shoppingList[i];
+                }
+
+                shoppingList[line-1]=added;
+                itemNUM++;
+            }
+            else
+            {
+                System.out.println("wrong line!!!");
+            }
+        }
+        
+        public String maxItem()
+        {
+            String max=shoppingList[0];
+            for(int i=0; i<itemNUM; i++)
+            {
+                if(shoppingList[i].compareToIgnoreCase(max)>0)
+                {
+                    max=shoppingList[i];
+                }
+            }
+            
+            return max;
+        }   
+        
+        public String minItem()
+        {
+            String min=shoppingList[0];
+            for(int i=0; i<itemNUM; i++)
+            {
+                if(shoppingList[i].compareToIgnoreCase(min)<0)
+                {
+                    min=shoppingList[i];
+                }
+            }
+            
+            return min;
+        }
+        
+        public void swap(int i1,int i2)
+        {
+            String temp=shoppingList[i1-1];
+            shoppingList[i1-1]=shoppingList[i2-1];
+            shoppingList[i2-1]=temp;
+
+
+        }
+        
+        public void sortOut()
+        {
+            Arrays.sort(shoppingList);
+        }
+        public void Del_item_fromBeginning()
+        {
+            if(itemNUM>0)
+            {
+                for(int i=0; i<itemNUM-1; i++)// 3 - 0 1 2 - 1 2 3
+                {
+                    shoppingList[i]=shoppingList[i+1];
+                }
+                itemNUM--;
+            }
+            else
+            {
+                System.out.println("There is no item on the list!!!");
+            }
+        }
+             
+        public void Del_item_fromEnd()
+        {
+            if(itemNUM>0)
+            {
+                itemNUM--;
+                shoppingList[itemNUM]="";
+            }
+            else
+            {
+                System.out.println("There is no item on the list!!!");
+            }
+        }
+         
+        
+        public void Del_item(int item)
+        {
+            if(itemNUM>0)
+            {
+                for(int i=item; i<itemNUM; i++)// 3 - 0 1 2 - 1 2 3
+                {
+                    shoppingList[i-1]=shoppingList[i];
+                }
+                itemNUM--;
+            }
+            else
+            {
+                System.out.println("There is no item on the list!!!");
+            }
+        }
+   
+        
+        public void printList()
+        {
+            System.out.println("MY SHOPPING LIST\n--------------------");
+            for(int i=0; i<itemNUM; i++)
+            {
+                System.out.println(shoppingList[i]);              
+            }
+        }
+        
+       
+        
+    }
+    
+
+    //</editor-fold>
+
+//<editor-fold defaultstate="collapsed" desc="selection-sort">
+
+class SelectionSort 
+{ 
+    void sort(int arr[]) 
+    { 
+        int n = arr.length; 
+  
+        // One by one move boundary of unsorted subarray 
+        for (int i = 0; i < n-1; i++) 
+        { 
+            // Find the minimum element in unsorted array 
+            int min_idx = i; 
+            for (int j = i+1; j < n; j++) 
+                if (arr[j] < arr[min_idx]) 
+                    min_idx = j; 
+  
+            // Swap the found minimum element with the first 
+            // element 
+            int temp = arr[min_idx]; 
+            arr[min_idx] = arr[i]; 
+            arr[i] = temp; 
+        } 
+    } 
+  
+    // Prints the array 
+    void printArray(int arr[]) 
+    { 
+        int n = arr.length; 
+        for (int i=0; i<n; ++i) 
+            System.out.print(arr[i]+" "); 
+        System.out.println(); 
+    }
     
 }
-
-
+    //</editor-fold>
