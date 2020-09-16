@@ -4625,6 +4625,7 @@ N
     // </editor-fold> 
 
 //<editor-fold defaultstate="collapsed" desc="ARRAY-Class">
+
     class ARRAYshopping
     {
         String shoppingList[];
@@ -4773,7 +4774,7 @@ N
         
        
         
-    }
+        }
     
 
     //</editor-fold>
